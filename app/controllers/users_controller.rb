@@ -1,7 +1,7 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   def index
   end
-  
+
   def show
     render json: @user
   end
