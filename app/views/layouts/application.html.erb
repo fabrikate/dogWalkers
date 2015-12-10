@@ -5,22 +5,26 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-<nav>
-  
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="/" class="navbar-brand">eDoggy</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+      <li id="userName"><%= current_user.name %></li>
+      <li><img src="<%= current_user.profileURL %>" alt="profilePic" /></li>
+      <li><%= link_to "Logout", signout_path, id: "sign_out" %></li>
+      <% else %>
+      <li><%= link_to "Login", "/auth/facebook", id: "sign_in" %></li>
+      <% end %>
+    </ul>
+  </div>
 </nav>
 
-
-<div>
-  <% if current_user %>
-  Signed in as <strong><%= current_user.name %></strong>!
-  <img src="<%= current_user.profileURL %>" alt="profile picture" />
-  <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-  <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
 
 <%= yield %>
 

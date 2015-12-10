@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   root to: 'home#show'
 
   resources :users
+  resources :dogs
+  resources :dog_walkers
 end
