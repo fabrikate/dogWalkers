@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       render json: {id: @user.id, email: @user.email }, status: :created
+      redirect_to root_path
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -34,7 +35,15 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :name, :provider, :uid, :oauth_token, :oauth_expires_at)
+    params.require(:user).permit(
+    :email,
+    :password,
+    :password_digest,
+    :name,
+    :provider,
+    :uid,
+    :oauth_token,
+    :oauth_expires_at)
   end
 
 end
