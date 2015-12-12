@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="/assets/style.css">
 </head>
-<body>
+<body ng-app="app">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -25,8 +25,7 @@
   </div>
 </nav>
 
-<div class="container-fluid">
-<%= yield %>
+<div class="container-fluid" ng-view>
 </div>
 </body>
 </html>
