@@ -1,0 +1,39 @@
+
+
+<div class="row">
+  <h1 class="headers col-lg-4 col-lg-offset-2 col-xs-4 col-xs-offset-2">Edit your profile </h1>
+</div>
+<form class="container-fluid">
+  <div class="row">
+    <img class="img-circle" src="<%= current_user.profileURL %>"/>
+    <legend class="col-lg-offset-2 col-lg-3 headers"><%= current_user.name %></legend>
+  </div>
+  <div id="ownerOrWalker" class="row col-lg-offset-2 col-xs-offset-2">
+    <label class="headers col-lg-1 col-xs-1 control-label">Dog Owner or Walker?</label>
+    <div class="col-lg-4 col-xs-4 radio">
+      <label class="headers control-label" for="dogOwner">
+        <input type="radio" name="dog" class="radio" id="dogOwner" value="owner"/>
+        Owner
+      </label>
+      <label class="headers control-label" for="dogWalker">
+        <input type="radio" name="dog" class="radio" id="dogWalker" value="walker" />
+        Walker
+      </label>
+    </div>
+  </div>
+  <div class="row col-lg-offset-2 col-xs-offset-2">
+    <label class="headers control-label col-lg-1 col-xs-1" for="email">Email</label>
+    <input type="email" class="col-lg-3 col-xs-3" id="email" name="user[email]" placeholder="email" />
+  </div>
+  <div class="row col-lg-offset-2 col-xs-offset-2">
+    <label class="headers control-label col-lg-1 col-xs-1" for="address">Address</label>
+    <input class="col-lg-3 col-xs-3" type="text" id="address" name="user[street]" placeholder="Street Address"/>
+  </div>
+  <div class="row col-lg-offset-2 col-xs-offset-2">
+    <label class="col-lg-1 col-xs-1"></label>
+    <input class="col-lg-2 col-xs-2" type="text" name="user[city]" placeholder="City, State"/>
+    <input class="col-lg-1 col-xs-1" type="number" name="user[zipcode]" placeholder="Zip Code" />
+  </div>
+  <label class="col-lg-1 col-xs-1"></label>
+  <input type="submit" value="next" class="btn btn-success col-lg-offset-2 col-xs-offset-2 col-lg-2 col-xs-2" />
+</form>
