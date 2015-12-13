@@ -1,0 +1,19 @@
+<div id="landingPage">
+  <img src="/assets/huskyOnBeach.jpg" class="img-responsive" id="backgroundImg" alt="dog on beach"/>
+  <div id="howWeWork" class="">
+    <h2 class="text-primary">How it Works</h2>
+    <p class="text-primary">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </div>
+
+  <div id="signupLogin" class="col-lg-2 col-xs-2">
+    <h2 class="headers">Get started!</h2>
+    <% if current_user %>
+      <a class="btn btn-success" href='users/<%= current_user.id %>/edit'>Set up your profile</a>
+    <% else %>
+      <p class="headers">Sign up with facebook</p>
+      <%= link_to "Facebook", "/auth/facebook", id: "sign_up", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

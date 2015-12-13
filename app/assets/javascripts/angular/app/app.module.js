@@ -9,7 +9,7 @@
   ])
   .config(configModule);
 
-  configModule.$inject = [ '$routeProvider'];
+  configModule.$inject = ['$routeProvider'];
 
   function configModule ($routeProvider) {
     $routeProvider
