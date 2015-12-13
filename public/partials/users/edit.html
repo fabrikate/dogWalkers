@@ -35,13 +35,71 @@
   </div>
   <label class="col-lg-1 col-xs-1"></label>
 
-  <div id="owner" ng-if="vm.userType === 'owner'" class="row col-lg-offset-1 col-xs-offset-1 col-lg-3 col-xs-3">
+  <div id="owner" ng-if="vm.userType === 'owner'" class="container-fluid col-lg-offset-1 col-xs-offset-1 col-lg-4 col-xs-4">
     <legend class="headers">{{vm.userType}}</legend>
+    <div class="row">
+      <label class="headers control-label" for="dogName">Dog's Name</label>
+      <input type="text" name="dogName" id="dogName" placeholder="Lili"/>
+    </div>
+    <div class="row">
+      <label class="headers control-label" for="dogAge">Age (years)</label>
+      <input type="number" name="dogAge" id="dogAge" />
+    </div>
+    <div class="row">
+      <label class="headers control-label" for="dogWeight">Dog's Weight in lbs</label>
+      <input type="number" name="dogWeight" id="dogWeight" placeholder="8"/>
+    </div>
+    <div class="row">
+      <p class="headers">
+        On a Scale of 1 to 5. 1 meaning your dog does not have the behavior to 5 meaning the dog does have this behavior.
+      </p>
+      <label class="headers control-label" for="Aggressive">Aggressive</label>
+      <input type="number" name="dogAggression" id="Aggressive" min="1" max="5" value=""/>
+      <label class="headers control-label" for="Confidence">Confidence</label>
+      <input type="number" name="dogConfidence" id="Confidence" min="1" max="5" value="">
+    </div>
+    <input type="submit" value="next" class="btn btn-success row" />
   </div>
 
   <div class="row col-lg-offset-1 col-xs-offset-1 col-lg-3 col-xs-3" id="walker" ng-if="vm.userType === 'walker'">
     <legend class="headers">{{ vm.userType }}</legend>
+    <label class="headers control-label" for="availability">Schedule Availability</label>
+    <div class="row">
+      <label for="" class="col-lg-2 control-label headers">Sun</label>
+      <input type="time" name="sunStart" />
+      <input type="time" name="sunStop" />
+    </div>
+    <div class="row">
+      <label for="" class="col-lg-2 control-label headers">Mon</label>
+      <input type="time" name="monStart" />
+      <input type="time" name="monStop" />
+    </div>
+    <div class="row">
+      <label for="" class="col-lg-2 control-label headers">Tue</label>
+      <input type="time" name="tueStart" />
+      <input type="time" name="tueStop" />
+    </div>
+    <div class="row">
+      <label for="" class="col-lg-2 control-label headers">Wed</label>
+      <input type="time" name="wedStart" />
+      <input type="time" name="wedStop" />
+    </div>
+    <div class="row">
+      <label for="" class="col-lg-2 control-label headers">Thu</label>
+      <input type="time" name="thurStart" />
+      <input type="time" name="thurStop" />
+    </div>
+    <div class="row">
+      <label for="" class="col-lg-2 control-label headers">Fri</label>
+      <input type="time" name="friStart" />
+      <input type="time" name="friStop" />
+    </div>
+    <div class="row">
+      <label for="" class="col-lg-2 control-label headers">Sat</label>
+      <input type="time" name="satStart" />
+      <input type="time" name="satStop" />
+    </div>
+      <input type="submit" value="next" class="btn btn-success row" />
+    </div>
   </div>
-
-  <!-- <input type="submit" value="next" class="btn btn-success col-lg-offset-2 col-xs-offset-2 col-lg-2 col-xs-2" /> -->
 </form>
