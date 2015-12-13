@@ -1,25 +1,23 @@
 <div class="row" ng-controller="UsersController">
   <h1 class="headers col-lg-4 col-lg-offset-2 col-xs-4 col-xs-offset-2">Edit your profile </h1>
 </div>
-<form class="container-fluid">
+<form class="container-fluid" ng-submit="vm.updateUser()">
   <div class="row">
-    <img class="img-circle" src="<%= current_user.profileURL %>"/>
-    <legend class="col-lg-offset-2 col-lg-3 headers"><%= current_user.name %></legend>
+    <img class="img-circle" src="{{ vm.users.profileURL }}"/>
+    <legend class="col-lg-offset-2 col-lg-3 headers">{{ vm.users.name}}</legend>
   </div>
   <div id="ownerOrWalker" class="row col-lg-offset-2 col-xs-offset-2">
     <label class="headers col-lg-1 col-xs-1 control-label">Dog Owner or Walker?</label>
     <div class="col-lg-4 col-xs-4 radio">
       <label class="headers control-label" for="dogOwner">
-        <input type="radio" name="dog" class="radio" id="dogOwner" value="owner"/>
+        <input type="radio" name="dog" class="radio" id="dogOwner" ng-model="vm.userType" value="owner"/>
         Owner
       </label>
       <label class="headers control-label" for="dogWalker">
-        <input type="radio" name="dog" class="radio" id="dogWalker" value="walker" />
+        <input type="radio" name="dog" class="radio" id="dogWalker" ng-model="vm.userType" value="walker" />
         Walker
       </label>
     </div>
-  </div>
-  <div id="owner">
   </div>
 
   <div id="emailAddress" class="row col-lg-offset-2 col-xs-offset-2">
@@ -36,5 +34,14 @@
     <input class="col-lg-1 col-xs-1" type="number" name="user[zipcode]" placeholder="Zip Code" />
   </div>
   <label class="col-lg-1 col-xs-1"></label>
-  <input type="submit" value="next" class="btn btn-success col-lg-offset-2 col-xs-offset-2 col-lg-2 col-xs-2" />
+
+  <div id="owner" ng-if="vm.userType === 'owner'" class="row col-lg-offset-1 col-xs-offset-1 col-lg-3 col-xs-3">
+    <legend class="headers">{{vm.userType}}</legend>
+  </div>
+
+  <div class="row col-lg-offset-1 col-xs-offset-1 col-lg-3 col-xs-3" id="walker" ng-if="vm.userType === 'walker'">
+    <legend class="headers">{{ vm.userType }}</legend>
+  </div>
+
+  <!-- <input type="submit" value="next" class="btn btn-success col-lg-offset-2 col-xs-offset-2 col-lg-2 col-xs-2" /> -->
 </form>

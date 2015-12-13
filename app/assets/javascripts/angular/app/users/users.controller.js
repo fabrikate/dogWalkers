@@ -10,10 +10,12 @@
     $('#landingPage').hide();
     var vm = this;
 
-    var Users = UserFactory.get({}, function (data) {
-      console.log(data);
-      vm.User = data;
+    var Users = UserFactory.query(function (data) {
+      vm.users = data["0"]
     })
+
+    vm.updateUser = function () {}
+
   }
 
 })();

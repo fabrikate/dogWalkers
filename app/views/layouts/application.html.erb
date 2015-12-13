@@ -19,7 +19,7 @@
       <li><img src="<%= current_user.profileURL %>" alt="profilePic" class="img-circle" /></li>
       <li><%= link_to "Logout", signout_path, id: "sign_out" %></li>
       <% else %>
-      <li><%= link_to "Login", "/auth/facebook", id: "sign_in" %></li>
+      <li><%= link_to "Login", "/auth/facebook", id: "sign_in", class: "btn btn-primary" %></li>
       <% end %>
     </ul>
   </div>
