@@ -10,11 +10,11 @@
     <label class="headers col-lg-1 col-xs-1 control-label">Dog Owner or Walker?</label>
     <div class="col-lg-4 col-xs-4 radio">
       <label class="headers control-label" for="dogOwner">
-        <input type="radio" name="dog" class="radio" id="dogOwner" ng-model="vm.userType" value="owner"/>
+        <input type="radio" name="dog" class="radio" id="dogOwner" ng-model="vm.userInfo.userType" value="owner"/>
         Owner
       </label>
       <label class="headers control-label" for="dogWalker">
-        <input type="radio" name="dog" class="radio" id="dogWalker" ng-model="vm.userType" value="walker" />
+        <input type="radio" name="dog" class="radio" id="dogWalker" ng-model="vm.userInfo.userType" value="walker" />
         Walker
       </label>
     </div>
@@ -22,20 +22,20 @@
 
   <div id="emailAddress" class="row col-lg-offset-2 col-xs-offset-2">
     <label class="headers control-label col-lg-1 col-xs-1" for="email">Email</label>
-    <input type="email" class="col-lg-3 col-xs-3" id="email" name="user[email]" placeholder="email" />
+    <input type="email" class="col-lg-3 col-xs-3" id="email" name="user[email]" placeholder="email" ng-model="vm.userInfo.email"/>
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
     <label class="headers control-label col-lg-1 col-xs-1" for="address">Address</label>
-    <input class="col-lg-3 col-xs-3" type="text" id="address" name="user[street]" placeholder="Street Address"/>
+    <input class="col-lg-3 col-xs-3" type="text" id="address" name="user[street]" placeholder="Street Address" ng-model="vm.userInfo.locationStreet"/>
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
     <label class="col-lg-1 col-xs-1"></label>
-    <input class="col-lg-2 col-xs-2" type="text" name="user[city]" placeholder="City, State"/>
-    <input class="col-lg-1 col-xs-1" type="number" name="user[zipcode]" placeholder="Zip Code" />
+    <input class="col-lg-2 col-xs-2" type="text" name="user[city]" placeholder="City, State" ng-model="vm.userInfo.locationCitySA"/>
+    <input class="col-lg-1 col-xs-1" type="number" name="user[zipcode]" placeholder="Zip Code" ng-model="vm.userInfo.locationZip"/>
   </div>
   <label class="col-lg-1 col-xs-1"></label>
 
-  <div id="owner" ng-if="vm.userType === 'owner'" class="container-fluid col-lg-offset-1 col-xs-offset-1 col-lg-4 col-xs-4">
+  <div id="owner" ng-if="vm.userInfo.userType === 'owner'" class="container-fluid col-lg-offset-1 col-xs-offset-1 col-lg-4 col-xs-4">
     <legend class="headers">{{vm.userType}}</legend>
     <div class="row">
       <label class="headers control-label" for="dogName">Dog's Name</label>
@@ -61,44 +61,45 @@
     <input type="submit" value="next" class="btn btn-success row" />
   </div>
 
-  <div class="row col-lg-offset-1 col-xs-offset-1 col-lg-3 col-xs-3" id="walker" ng-if="vm.userType === 'walker'">
-    <legend class="headers">{{ vm.userType }}</legend>
-    <label class="headers control-label" for="availability">Schedule Availability</label>
+  <div class="row col-lg-offset-1 col-xs-offset-1 col-lg-3 col-xs-3" id="walker" ng-if="vm.userInfo.userType === 'walker'">
+    <legend class="headers">{{ vm.userInfo.userType }}</legend>
+    <label class="headers control-label" for="availability">Schedule Availability (Military Time)</label>
     <div class="row">
       <label for="" class="col-lg-2 control-label headers">Sun</label>
-      <input type="time" name="sunStart" />
-      <input type="time" name="sunStop" />
+      <input type="number" min="0" max="24" name="sunStart" ng-model="vm.walkerAvailability.SunSta"/>
+      <input type="number" min="0" max="24" name="sunStop" ng-model="vm.walkerAvailability.SunSto"/>
     </div>
     <div class="row">
       <label for="" class="col-lg-2 control-label headers">Mon</label>
-      <input type="time" name="monStart" />
-      <input type="time" name="monStop" />
+      <input type="number" min="0" max="24" name="monStart" ng-model="vm.walkerAvailability.MonSta"/>
+      <input type="number" min="0" max="24" name="monStop" ng-model="vm.walkerAvailability.MonSto"/>
     </div>
     <div class="row">
       <label for="" class="col-lg-2 control-label headers">Tue</label>
-      <input type="time" name="tueStart" />
-      <input type="time" name="tueStop" />
+      <input type="number" min="0" max="24" name="tueStart" ng-model="vm.walkerAvailability.TueSta"/>
+      <input type="number" min="0" max="24" name="tueStop" ng-model="vm.walkerAvailability.TueSto"/>
     </div>
     <div class="row">
       <label for="" class="col-lg-2 control-label headers">Wed</label>
-      <input type="time" name="wedStart" />
-      <input type="time" name="wedStop" />
+      <input type="number" min="0" max="24" name="wedStart" ng-model="vm.walkerAvailability.WedSta"/>
+      <input type="number" min="0" max="24" name="wedStop" ng-model="vm.walkerAvailability.WedSto"/>
     </div>
     <div class="row">
       <label for="" class="col-lg-2 control-label headers">Thu</label>
-      <input type="time" name="thurStart" />
-      <input type="time" name="thurStop" />
+      <input type="number" min="0" max="24" name="thurStart" ng-model="vm.walkerAvailability.ThuSta"/>
+      <input type="number" min="0" max="24" name="thurStop" ng-model="vm.walkerAvailability.ThuSto"/>
     </div>
     <div class="row">
       <label for="" class="col-lg-2 control-label headers">Fri</label>
-      <input type="time" name="friStart" />
-      <input type="time" name="friStop" />
+      <input type="number" min="0" max="24" name="friStart" ng-model="vm.walkerAvailability.FriSta"/>
+      <input type="number" min="0" max="24" name="friStop" ng-model="vm.walkerAvailability.FriSto"/>
     </div>
     <div class="row">
       <label for="" class="col-lg-2 control-label headers">Sat</label>
-      <input type="time" name="satStart" />
-      <input type="time" name="satStop" />
+      <input type="number" min="0" max="24" name="satStart" ng-model="vm.walkerAvailability.SatSta"/>
+      <input type="number" min="0" max="24" name="satStop" ng-model="vm.walkerAvailability.SatSto"/>
     </div>
+    <p class="text-info"> {{ vm.walkerAvailability }}</p>
       <input type="submit" value="next" class="btn btn-success row" />
     </div>
   </div>
