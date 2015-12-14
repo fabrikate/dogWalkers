@@ -17,4 +17,5 @@
 //= require ./angular/app/app.module.js
 //= require ./angular/app/users/users.module
 //= require ./angular/app/dogs/dogs.module
+//= require ./angular/app/dog_walkers/dog_walkers.module
 //= require_tree .

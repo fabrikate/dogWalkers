@@ -1,4 +1,4 @@
-class DogWalker < ApplicationController
+class DogWalkers < ApplicationController
   def index
     @dogWalkers = DogWalker.all
     render json: @dogWakers

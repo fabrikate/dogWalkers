@@ -10,12 +10,6 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  def logout
-    session[:user_id] = nil
-    render json: {message: 'Logged out'}
-    redirect_to root_path
-  end
-
   private
   def user_params
     params.require(:user).permit(

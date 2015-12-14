@@ -4,8 +4,8 @@
     'ngRoute',
     'ngResource',
     'app.users',
-    'app.dogs'
-    // 'app.dog_walkers'
+    'app.dogs',
+    'app.dog_walkers'
   ])
   .config(configModule);
 
