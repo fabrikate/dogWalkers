@@ -16,4 +16,5 @@
 //= require_tree ./angular/lib
 //= require ./angular/app/app.module.js
 //= require ./angular/app/users/users.module
+//= require ./angular/app/dogs/dogs.module
 //= require_tree .

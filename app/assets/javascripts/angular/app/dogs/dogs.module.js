@@ -1,4 +1,3 @@
 (function () {
-  angular
-  .module('app.dogs', [])
+  angular.module('app.dogs', [])
 })();
