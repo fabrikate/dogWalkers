@@ -46,6 +46,7 @@
       weight: '',
       aggression: '',
       confidence: '',
+      pictureUrl: '',
       user_id: $routeParams
     }
     // update the user to the database

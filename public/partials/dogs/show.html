@@ -1,0 +1,11 @@
+<div class="container-fluid" ng-controller="DogShowController">
+  <div class="col-lg-10 col-xs-10">
+    <legend class="text-info"><h1>{{vm.dog.name}}</h1></legend>
+    <img src="{{vm.dog.pictureURL}}" alt="dog picture" class="img-responsive col-lg-5 col-xs-5"/>
+    <h3 class="headers">Age: {{vm.dog.age}}</h3>
+    <h3 class="headers">Weight: {{vm.dog.weight}}</h3>
+    <h3 class="headers">Aggression: {{vm.dog.aggression}} /5</h3>
+    <h3 class="headers">Confidence: {{vm.dog.confidence}} /5</h3>
+    <h3 class="headers" ng-show="vm.dogUser.name">Contact: {{vm.dogUser.name}}</h3>
+  </div>
+</div>

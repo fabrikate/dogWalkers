@@ -1,6 +1,7 @@
 class DogWalker < ApplicationController
   def index
     @dogWalkers = DogWalker.all
+    render json: @dogWakers
   end
 
   private

@@ -1,3 +1,13 @@
-<div ng-controller="DogsController">
-  <h1>I'm here</h1>
+<div ng-controller="DogsController" class="container">
+  <h1 class="headers">All Dogs in database</h1>
+  <div class="row">
+    <div ng-repeat="dog in vm.Dogs" class="col-lg-4 col-xs-4">
+      <legend class="text-info"><a href="#/dogs/{{dog.id}}" class="text-info">{{dog.name}}</a></legend>
+      <img src="{{dog.pictureURL}}" class="img-reactive col-lg-8" alt="dog picture" />
+      <p class="headers control-label">Age: {{dog.age}}</p>
+      <p class="headers control-label">Weight: {{dog.weight}}</p>
+      <p class="headers control-label">Aggression: {{dog.aggression}}/5</p>
+      <p class="headers control-label">Confidence: {{dog.confidence}}/5</p>
+    </div>
+  </div>
 </div>

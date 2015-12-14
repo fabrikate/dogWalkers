@@ -12,5 +12,10 @@
       controller: 'DogsController',
       controllerAs: 'vm'
     })
+    .when('/dogs/:id', {
+      templateUrl: '/partials/dogs/show.html',
+      controller: 'DogShowController',
+      controllerAs: 'vm'
+    })
   }
 })();
