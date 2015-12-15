@@ -9,12 +9,9 @@
   ])
   .config(configModule);
 
-  configModule.$inject = ['$httpProvider','$routeProvider'];
+  configModule.$inject = ['$httpProvider'];
 
-  function configModule ($httpProvider, $routeProvider) {
-    $routeProvider
-    .otherwise({redirectTo: '/'});
-
+  function configModule ($httpProvider) {
     // $locationProvider.html5Mode(true);
     $httpProvider.defaults.headers.common['X-CSRF-Token'] =
     $('meta[name=csrf-token]').attr('content')
