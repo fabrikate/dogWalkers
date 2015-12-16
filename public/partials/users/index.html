@@ -1,6 +1,19 @@
-<p class="headers"> All Users </p>
-<div class="col-lg-offset-1 col-lg-10 col-xs-offset-1 col-xs-10" ng-repeat="user in vm.Users">
-  <p class="headers">
-    {{user.name}}
+<div ng-controller="UsersController" class="container-fluid">
+  <legend class="headers">
+    <h1 class="headers">All Dog Walkers</h1>
+    <input type="text" />
+  </legend>
+  <p class="text-danger">
+    {{vm.Users}}
   </p>
+  <div ng-repeat="user in vm.Users">
+    <div ng-if="user.dog_walker === 'true'">
+      <p class="headers">{{user.name}}</p>
+      <p class="headers">{{user.location}}</p>
+      <p class="headers">{{user.email}}</p>
+      <p ng-if="user.rating > 3" class="text-success">{{user.rating}}</p>
+      <p ng-if="user.rating <=2" class="text-danger">{{user.rating}}</p>
+      <a href="/notifications/notify" class="btn btn-success">Schedule a Walk</a>
+    </div>
+  </div>
 </div>

@@ -9,10 +9,15 @@
     // hide the main page
     $('#landingPage').hide();
     var vm = this;
+    var spot;
     // get users from the db
     var Users = UserFactory.query(function (data) {
-      vm.user = data["0"]
-      console.log('vm.user is: ', vm.user);
+      vm.Users = data;
+      data.forEach(function(item){
+        parseInt($routeParams.user_id) === item.id ? spot = item : console.log('no');
+        vm.user = data[data.indexOf(spot)]
+      })
+
     })
     vm.user = {
       location: vm.locationSt + vm.locationZip,
