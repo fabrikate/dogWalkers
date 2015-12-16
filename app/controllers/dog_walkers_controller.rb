@@ -1,20 +1,20 @@
 class DogWalkersController < ApplicationController
   def index
     @dog_walkers = DogWalker.all
-    render json: @dogWalkers
+    render json: @dog_walkers
   end
 
   def show
-    @dogWalker = DogWalker.find([params:id])
-    render json: @dogWalker, status: :ok
+    @dog_walker = DogWalker.find(params[:id])
+    render json: @dog_walker, status: :ok
   end
 
-  def show
-    @dogWalker = DogWalker.create(dog_walker_params)
-    if @dogWalker.save
-      render json: {id:@dogWalker.id, availability: @dogWalker.availability}, status: :created
+  def create
+    @dog_walker = DogWalker.create(dog_walker_params)
+    if @dog_walker.save
+      render json: {id:@dog_walker.id, availability: @dog_walker.availability}, status: :created
     else
-      render json @dogWalker.errors, status: :unprocessable_entity
+      render json @dog_walker.errors, status: :unprocessable_entity
     end
   end
 
@@ -22,20 +22,22 @@ class DogWalkersController < ApplicationController
   end
 
   def update
-    if @dogWalker.update(dog_walker_params)
-      render json: {id:@dogWalker.id, availability: @dogWalker.availability}, status: :created
+    @dog_walker = DogWalker.find(params[:id])
+    if @dog_walker.update(dog_walker_params)
+      render json: {id:@dog_walker.id, availability: @dog_walker.availability}, status: :created
     else
-      render json: @dogWalker.errors, status: :unprocessable_entity
+      render json: @dog_walker.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @dogWalker.destroy
+    @dog_walker = DogWalker.find(params[:id])
+    @dog_walker.destroy
     render json: {message: "#{@dogWalker.id} deleted"}, status: :unauthorized
   end
 
   private
   def dog_walker_params
-    params.require(:dogWalker).permit(:location, :availability, :has_dogs)
+    params.require(:dog_walker).permit(:id, :availability)
   end
 end

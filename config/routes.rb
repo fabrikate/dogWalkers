@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resource :sessions, only: [:create, :destroy]
 
   post '/twilio/voice', to: 'twilio#voice'
+  post '/notifications/notify', to: 'notifications#notify'
 
   scope '/api' do
     resources :users
