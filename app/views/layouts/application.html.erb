@@ -2,10 +2,11 @@
 <html>
 <head>
   <title>EDoggy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="/assets/style.css">
+  <base href="/application.html.erb">
 </head>
 <body ng-app="app">
 <nav class="navbar navbar-default">
@@ -17,7 +18,7 @@
       <% if current_user %>
       <li id="userName"><%= current_user.name %></li>
       <li><img src="<%= current_user.profileURL %>" alt="profilePic" class="img-circle" /></li>
-      <li><%= link_to "Logout", signout_path, id: "sign_out" %></li>
+      <li><%= link_to "Logout", '/sessions', method: :delete%></li>
       <% else %>
       <li><%= link_to "Login", "/auth/facebook", id: "sign_in", class: "btn btn-primary" %></li>
       <% end %>

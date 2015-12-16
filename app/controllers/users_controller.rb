@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
     render json: @user, status: :ok
   end
 
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = user
     if @user.update(user_params)
       render json: { id: @user.id, email: @user.email }, status: :ok
     else
@@ -31,11 +33,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = user
     @user.destroy
     render json: {message: "#{@user.id} deleted"}, status: :unauthorized
   end
 
   private
+  def user
+    User.find(params[:id])
+  end
+
   def user_params
     params.require(:user).permit(
     :email,
