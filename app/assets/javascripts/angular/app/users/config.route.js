@@ -12,5 +12,10 @@
       controller: 'UsersController',
       controllerAs: 'vm'
     })
+    .when('/users', {
+      templateUrl: '/partials/users/index.html',
+      controller: 'UsersController',
+      controllerAs: 'vm'
+    })
   }
 })();

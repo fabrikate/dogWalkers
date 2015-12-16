@@ -27,33 +27,38 @@
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
     <label class="headers control-label col-lg-1 col-xs-1" for="address">Address</label>
-    <input class="col-lg-3 col-xs-3" type="text" id="address" name="user[street]" placeholder="Street Address" ng-model="vm.locationSt"/>
+    <input class="col-lg-3 col-xs-3" type="text" id="address" name="user[street]" placeholder="123 Easy St" ng-model="vm.locationSt"/>
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
     <label class="col-lg-1 col-xs-1"></label>
-    <input class="col-lg-2 col-xs-2" type="number" name="user[zipcode]" placeholder="Zip Code" ng-model="vm.locationZip"/>
+    <input class="col-lg-2 col-xs-2" type="number" name="user[zipcode]" placeholder="98112" ng-model="vm.locationZip"/>
+  </div>
+  <div class="row col-lg-offset-2 col-xs-offset-2">
+    <label class="headers control-label col-lg-1 col-xs-1" for="address">Phone</label>
+    <input class="col-lg-2 col-xs-2" type="phone" name="user[phoneNum]" placeholder="(206)555-5555"/>
+
   </div>
   <label class="col-lg-1 col-xs-1"></label>
 
   <div id="owner" ng-if="vm.userType === 'owner'" class="container-fluid col-lg-offset-1 col-xs-offset-1 col-lg-4 col-xs-4">
     <legend class="headers">{{vm.userType}}</legend>
-    <div class="row">
-      <label class="headers control-label" for="dogName">Dog's Name</label>
-      <input type="text" name="dogName" id="dogName" placeholder="Lili"/>
+    <div class="row col-lg-12 col-xs-12">
+      <label class="headers control-label col-lg-5 col-xs-5" for="dogName">Dog's Name</label>
+      <input type="text" class="col-lg-offset-1 col-xs-offset-1col-lg-5 col-xs-5" name="dogName" id="dogName" placeholder="Lili"/>
     </div>
-    <div class="row">
-      <label for="dogPicture" class="headers control-label">Dog Picture URL</label>
+    <div class="row col-lg-12 col-xs-12">
+      <label class="headers control-label col-lg-5 col-xs-5" for="dogPicture" class="headers control-label">Dog Picture URL</label>
       <input type="text" name="dogPicture" id="dogPicture" />
     </div>
-    <div class="row">
-      <label class="headers control-label" for="dogAge">Age (years)</label>
+    <div class="row col-lg-12 col-xs-12">
+      <label class="headers control-label col-lg-5 col-xs-5" class="headers control-label" for="dogAge">Age (years)</label>
       <input type="number" name="dogAge" id="dogAge" />
     </div>
-    <div class="row">
-      <label class="headers control-label" for="dogWeight">Dog's Weight in lbs</label>
+    <div class="row col-lg-12 col-xs-12">
+      <label class="headers control-label col-lg-5 col-xs-5" for="dogWeight">Dog's Weight in lbs</label>
       <input type="number" name="dogWeight" id="dogWeight" placeholder="8"/>
     </div>
-    <div class="row">
+    <div class="row col-lg-12 col-xs-12">
       <p class="headers">
         On a Scale of 1 to 5. 1 meaning your dog does not have the behavior to 5 meaning the dog does have this behavior.
       </p>
@@ -65,9 +70,10 @@
     <input type="submit" value="next" class="btn btn-success row" />
   </div>
 
-  <div class="row col-lg-offset-1 col-xs-offset-1 col-lg-3 col-xs-3" id="walker" ng-if="vm.userInfo.userType === 'walker'">
-    <legend class="headers">{{ vm.userInfo.userType }}</legend>
+  <div class="row col-lg-offset-1 col-xs-offset-1 col-lg-3 col-xs-3" id="walker" ng-if="vm.userType === 'walker'">
+    <legend class="headers">{{ vm.userType }}</legend>
     <label class="headers control-label" for="availability">Schedule Availability (Military Time)</label>
+    <label class="headers control-label">Start Hour - End Hour</label>
     <div class="row">
       <label for="" class="col-lg-2 control-label headers">Sun</label>
       <input type="number" min="0" max="24" name="sunStart" ng-model="vm.walkerAvailability.SunSta"/>

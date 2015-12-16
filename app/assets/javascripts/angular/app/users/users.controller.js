@@ -1,5 +1,4 @@
 (function () {
-
   angular
   .module('app.users')
   .controller('UsersController', UsersController);

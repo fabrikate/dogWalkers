@@ -49,6 +49,7 @@ class UsersController < ApplicationController
     :password,
     :password_digest,
     :name,
+    :phoneNum,
     :location,
     :dog_owner,
     :dog_walker,
