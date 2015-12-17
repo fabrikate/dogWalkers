@@ -10,15 +10,44 @@
     $('#landingPage').hide();
     var vm = this;
     var spot;
-    // get users from the db
+    // get users from the db, assign them to an object to display in dogWalker Search
     var Users = UserFactory.query(function (data) {
-      vm.Users = data;
+      console.log(data);
+      vm.allWalkers = [];
       data.forEach(function(item){
-        parseInt($routeParams.user_id) === item.id ? spot = item : console.log('no');
+        vm.dogWalkers = {
+          id: item.id,
+          name: item.name,
+          profileURL: item.profileURL,
+          zipCode: item.location,
+          email: item.email,
+          rating: '',
+          dog_walker: item.dog_walker,
+          dogWalkerRating: item.dogWalkerRating
+        }
+        vm.allWalkers.push(angular.copy(vm.dogWalkers));
+        vm.dogWalkers = {
+          id: '',
+          name: '',
+          profileURL: '',
+          zipCode: '',
+          email: '',
+          rating: '',
+          dog_walker: '',
+          dogWalkerRating: 0
+        }
+        // display user information only when the $routeParams and user id match
+        parseInt($routeParams.user_id) === item.id ? spot = item : console.log('');
         vm.user = data[data.indexOf(spot)]
       })
-
     })
+    vm.dogWalkers = {
+      name: '',
+      zipCode: '',
+      email: '',
+      rating: '',
+      dog_walker: ''
+    }
     vm.user = {
       location: vm.locationSt + vm.locationZip,
       name: '',

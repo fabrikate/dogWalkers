@@ -10,7 +10,7 @@
   <div id="signupLogin" class="col-lg-2 col-xs-2">
     <h2 class="headers">Get started!</h2>
     <% if current_user %>
-      <a class="btn btn-success" href='/users/<%= current_user.id %>/edit'>Set up your profile</a>
+      <a class="btn btn-success" href='/#/users/<%= current_user.id %>/edit'>Set up your profile</a>
     <% else %>
       <p class="headers">Sign up with facebook</p>
       <%= link_to "Facebook", "/auth/facebook", id: "sign_up", class: "btn btn-primary" %>

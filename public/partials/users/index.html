@@ -1,18 +1,19 @@
 <div ng-controller="UsersController" class="container-fluid">
   <legend class="headers">
     <h1 class="headers">All Dog Walkers</h1>
-    <input type="text" />
+    <input type="text" ng-model="query" class="text-info"/>
   </legend>
-  <p class="text-danger">
-    {{vm.Users}}
-  </p>
-  <div ng-repeat="user in vm.Users">
+
+  <div ng-repeat="user in vm.allWalkers | filter:query ">
     <div ng-if="user.dog_walker === 'true'">
       <p class="headers">{{user.name}}</p>
-      <p class="headers">{{user.location}}</p>
+      <img ng-if="user.profileURL" ng-src="{{user.profileURL}}" alt="profile pic" class="img-reactive"/>
+      <p class="headers">{{user.zipCode}}</p>
       <p class="headers">{{user.email}}</p>
-      <p ng-if="user.rating > 3" class="text-success">{{user.rating}}</p>
-      <p ng-if="user.rating <=2" class="text-danger">{{user.rating}}</p>
+      <p class="headers">
+        Dog Walker rating from other users:
+        <p ng-class="user.dogWalkerRating >= '3' ? 'text-success' : 'text-danger'">{{user.dogWalkerRating}} /5</p>
+      </p>
       <a href="/notifications/notify" class="btn btn-success">Schedule a Walk</a>
     </div>
   </div>
