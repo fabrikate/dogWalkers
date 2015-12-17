@@ -1,15 +1,24 @@
 <div ng-controller="UsersController" class="container-fluid">
   <legend class="headers">
     <h1 class="headers">All Dog Walkers</h1>
-    <input type="text" ng-model="query" class="text-info"/>
+    <label for="zip">Enter your zip to find a walker near you: </label>
+    <input type="text" id="zip" ng-model="query" class="text-info"/>
+    <label for="sort">Sort by...</label>
+    <select ="sort" class="dropdown-toggle" data-toggle="dropdown" ng-model="sorted">
+      <option value="-rating">rating</option>
+      <option value="name">name</option>
+    </select>
   </legend>
 
-  <div ng-repeat="user in vm.allWalkers | filter:query ">
-    <div ng-if="user.dog_walker === 'true'">
-      <p class="headers">{{user.name}}</p>
-      <img ng-if="user.profileURL" ng-src="{{user.profileURL}}" alt="profile pic" class="img-reactive"/>
-      <p class="headers">{{user.zipCode}}</p>
-      <p class="headers">{{user.email}}</p>
+  <div ng-repeat="user in vm.allWalkers | filter:query | orderBy: sorted">
+    <div ng-if="user.dog_walker === 'true'" class="col-lg-4 col-xs-4">
+      <div class="row">
+        <h3 class="headers">{{user.name}}</h3>
+        <img ng-if="user.profileURL" ng-src="{{user.profileURL}}" alt="profile pic" class="img-reactive col-lg-3 col-xs-3"/>
+      </div>
+      <p class="headers">Neighborhood: {{user.zipCode | zip2neighborhood }}</p>
+      <p class="headers" ng-if="user.zipCode.length > 5">{{user.zipCode}}</p>
+      <p class="headers">Email: {{user.email}}</p>
       <p class="headers">
         Dog Walker rating from other users:
         <p ng-class="user.dogWalkerRating >= '3' ? 'text-success' : 'text-danger'">{{user.dogWalkerRating}} /5</p>
