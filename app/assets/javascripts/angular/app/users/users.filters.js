@@ -22,15 +22,18 @@
         98107 : "Ballard" ,
         98108 : "Beacon Hill" ,
         98109 : "South Lake Union / Queen Anne" ,
-        98110 : "Madrona" ,
+        98110 : "Bainbridge Island" ,
         98116 : "West Seattle / Alki Beach" ,
         98118 : "Columbia City" ,
         98121 : "Belltown" ,
+        98122 : "Central District / Madrona",
         98125 : "Northgate" ,
         98144 : "Mount Baker" ,
         98199 : "Magnolia" ,
         98112 : "Madison Park",
-        98115 : "Wedgwood / Roosevelt"
+        98115 : "Wedgwood / Roosevelt",
+        98144 : "Atlantic",
+        98108 : "Georgetown"
       };
       if (zip) {
         return neighborhoods[zip];

@@ -12,7 +12,6 @@
     var spot;
     // get users from the db, assign them to an object to display in dogWalker Search
     var Users = UserFactory.query(function (data) {
-      console.log(data);
       vm.allWalkers = [];
       data.forEach(function(item){
         vm.dogWalkers = {
@@ -37,8 +36,12 @@
           dogWalkerRating: 0
         }
         // display user information only when the $routeParams and user id match
-        parseInt($routeParams.user_id) === item.id ? spot = item : console.log('');
-        vm.user = data[data.indexOf(spot)]
+        if (parseInt($routeParams.user_id) === item.id) {
+          spot = item;
+          vm.user = data[data.indexOf(spot)]
+        }
+        // parseInt($routeParams.user_id) === item.id ? spot = item : console.log('error');
+        // vm.user = data[data.indexOf(spot)]
       })
     })
     vm.dogWalkers = {
