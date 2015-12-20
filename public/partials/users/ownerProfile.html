@@ -1,19 +1,20 @@
 <div class="container-fluid" ng-controller="OwnersController">
   <div class="row">
-    <div class="col-lg-4 col-xs-4">
+    <div class="col-lg-5 col-xs-5">
       <h1 class="headers">{{vm.user.name}}</h1>
-      <img ng-src="{{vm.user.profileURL}}" alt="profile picture" />
+      <img ng-src="{{vm.user.profileURL}}" alt="profile picture" class="col-lg-11 col-xs-11"/>
       <h3 class="text-primary">email: {{vm.user.email}}</h3>
-      <h3 class="text-primary">location: {{vm.user.location}}</h3>
-      <h3 class="text-primary">phone: {{vm.user.phoneNum}}</h3>
+      <h3 class="text-primary">address: {{vm.user.streetAddress}},  {{vm.user.zipCode}}</h3>
+      <h3 class="text-primary">phone: {{vm.user.phoneNum | telephone}}</h3>
     </div>
     <div class="col-lg-6 col-xs-6">
       <h2 class="headers">{{vm.usersDog.name}}</h2>
-      <img ng-src="{{vm.usersDog.pictureURL}}" alt="dog picture" />
+      <img ng-src="{{vm.usersDog.pictureURL}}" alt="dog picture" class="col-lg-8 col-xs-8"/>
       <h4 class="text-primary">Age: {{vm.usersDog.age}}</h4>
       <h4 class="text-primary">Weight: {{vm.usersDog.weight}}</h4>
       <h4 ng-class="vm.usersDog.aggression < '3' ? 'text-success' : 'text-warning'">Aggression: {{vm.usersDog.aggression}} / 5</h4>
       <h4 ng-class="vm.usersDog.confidence > '3' ? 'text-success' : 'text-warning'">Confidence: {{vm.usersDog.confidence}} / 5</h4>
+      <a href="/notifications/confirm" class="btn btn-primary">Confirm Walk</a>
     </div>
   </div>
 </div>

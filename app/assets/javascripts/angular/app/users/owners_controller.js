@@ -10,6 +10,7 @@
     var vm = this;
     var ID = $routeParams.user_id;
     var spot;
+    
 
     UserFactory.query(function(data) {
       data.forEach(function (item) {
