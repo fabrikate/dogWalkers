@@ -12,6 +12,11 @@
       controller: 'UsersController',
       controllerAs: 'vm'
     })
+    .when('/users/:user_id', {
+      templateUrl: '/partials/users/ownerProfile.html',
+      controller: 'OwnersController',
+      controllerAs: 'vm'
+    })
     .when('/dogWalkers', {
       templateUrl: '/partials/users/index.html',
       controller: 'UsersController',
