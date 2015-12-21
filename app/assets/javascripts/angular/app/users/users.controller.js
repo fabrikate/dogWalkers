@@ -68,7 +68,8 @@
             weight: dog.weight,
             aggression: dog.aggression,
             confidence: dog.confidence,
-            pictureURL: dog.pictureURL
+            pictureURL: dog.pictureURL,
+            user_id: dog.user_id
           }
         }
       })
