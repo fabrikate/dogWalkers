@@ -15,7 +15,7 @@ class DogsController < ApplicationController
     if @dog.save
       render json: {id: @dog.id, name: @dog.name}, status: :created
     else
-      render json @dog.errors, status: :unprocessable_entity
+      render json: @dog.errors, status: :unprocessable_entity
     end
   end
 
@@ -23,6 +23,7 @@ class DogsController < ApplicationController
   end
 
   def update
+    @dog = Dog.find(params[:id])
     if @dog.update(dog_params)
       render json: { id: @dog.id, name: @dog.name }, status: :created
     else

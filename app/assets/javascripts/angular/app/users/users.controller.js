@@ -3,13 +3,14 @@
   .module('app.users')
   .controller('UsersController', UsersController);
 
-  UsersController.$inject = ['$routeParams', 'UserFactory'];
+  UsersController.$inject = ['$routeParams', 'UserFactory', 'DogFactory'];
 
-  function UsersController($routeParams, UserFactory) {
+  function UsersController($routeParams, UserFactory, DogFactory) {
     // hide the main page
     $('#landingPage').hide();
     var vm = this;
     var spot;
+    var edittedUser, edittedDog;
     // get users from the db, assign them to an object to display in dogWalker Search
     var Users = UserFactory.query(function (data) {
       vm.allWalkers = [];
@@ -42,45 +43,49 @@
           spot = item;
           vm.user = data[data.indexOf(spot)]
         }
-        // parseInt($routeParams.user_id) === item.id ? spot = item : console.log('error');
-        // vm.user = data[data.indexOf(spot)]
       })
     })
-    vm.dogWalkers = {
-      name: '',
-      zipCode: '',
-      email: '',
-      rating: '',
-      dog_walker: ''
-    }
     vm.user = {
-      location: vm.locationSt + vm.locationZip,
+      profileURL: '',
       name: '',
+      streetAddress: '',
+      zipCode: '',
+      phoneNum: '',
       dog_owner: '',
       dog_walker: '',
       email: '',
-      phoneNum: ''
+      phoneNum: '',
+      dogs: []
     }
-    vm.dogInfo = {
-      name: '',
-      age: '',
-      weight: '',
-      aggression: '',
-      confidence: '',
-      pictureUrl: '',
-      user_id: $routeParams
-    }
+    // query dog database to update / create dog
+    DogFactory.query(function (data) {
+      data.forEach(function (dog) {
+        if ($routeParams.user_id === dog.user_id) {
+          vm.dogInfo = {
+            id: dog.id,
+            name: dog.name,
+            age: dog.age,
+            weight: dog.weight,
+            aggression: dog.aggression,
+            confidence: dog.confidence,
+            pictureURL: dog.pictureURL
+          }
+        }
+      })
+
+    })
     // update the user to the database
     // information pushed to the database needs to mirror the database structure
     vm.updateUser = function () {
       vm.userType === 'owner' ? vm.user.dog_owner = true : vm.user.dog_walker = true;
-      vm.updatedUser = new UserFactory();
-      vm.user = vm.updatedUser
-      UserFactory.save(vm.updatedUser).$promise.then(function(data) {
-        console.log(data);
+      UserFactory.update({id: vm.user.id }, vm.user).$promise.then(function(data) {
+          console.log('yes! ', data);
+        })
+        console.log(vm.dogInfo.id);
+      DogFactory.update({id: vm.dogInfo.id}, vm.dogInfo).$promise.then(function(data) {
+        console.log('yes dogs! ', data);
       })
     }
   }
-  // TODO: open up what params are permitted.
 
 })();

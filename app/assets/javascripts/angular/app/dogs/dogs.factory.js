@@ -7,7 +7,7 @@
 
   function DogFactory($resource) {
     return $resource('/api/dogs/:id', {id: '@id'}, {
-      update: {
+      'update': {
         method: 'PUT'
       }
     });
