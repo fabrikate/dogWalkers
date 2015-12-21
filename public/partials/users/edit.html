@@ -50,29 +50,28 @@
     </div>
     <div class="row col-lg-12 col-xs-12">
       <label class="headers control-label col-lg-5 col-xs-5" class="headers control-label" for="dogAge">Age (years)</label>
-      <input type="number" name="dogAge" id="dogAge" placeholder="2" ng-model="vm.dogInfo.age"/>
+      <input type="text" name="dogAge" id="dogAge" placeholder="2" ng-model="vm.dogInfo.age"/>
     </div>
     <div class="row col-lg-12 col-xs-12">
       <label class="headers control-label col-lg-5 col-xs-5" for="dogWeight">Dog's Weight in lbs</label>
-      <input type="number" name="dogWeight" id="dogWeight" placeholder="8" ng-model="vm.dogInfo.weight"/>
+      <input type="text" name="dogWeight" id="dogWeight" placeholder="8" ng-model="vm.dogInfo.weight"/>
     </div>
     <div class="row col-lg-12 col-xs-12">
       <p class="headers">
         On a Scale of 1 to 5. 1 meaning your dog does not have the behavior to 5 meaning the dog does have this behavior.
       </p>
       <label class="headers control-label" for="Aggressive">Aggressive</label>
-      <input type="number" name="dogAggression" id="Aggressive" min="1" max="5" placeholder="2" ng-model="vm.dogInfo.aggression"/>
+      <input type="text" name="dogAggression" id="Aggressive" ng-model="vm.dogInfo.aggression"/>
       <label class="headers control-label" for="Confidence">Confidence</label>
-      <input type="number" name="dogConfidence" id="Confidence" min="1" max="5" placeholder="2" ng-model="vm.dogInfo.confidence">
+      <input type="text" name="dogConfidence" id="Confidence" ng-model="vm.dogInfo.confidence"/>
     </div>
-    <input type="submit" value="next" class="btn btn-success row" />
+    <a ng-href="/#/users/{{vm.user.id}}" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
   </div>
 
   <div class="row col-lg-offset-1 col-xs-offset-1 col-lg-3 col-xs-3" id="walker" ng-if="vm.userType === 'walker'">
     <legend class="headers">{{ vm.userType }}</legend>
     <p class="text-danger">By clicking below I agree that I will not harm any animals or people I meet through this website.</p>
-      <!-- <input type="submit" value="submit" class="btn btn-success row" /> -->
-      <a ng-href="/#/users/{{vm.user.id}}" class="btn btn-success">-></a>
+      <a href="/#/users/{{vm.user.id}}" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
     </div>
   </div>
 </form>

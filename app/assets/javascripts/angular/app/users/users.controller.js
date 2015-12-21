@@ -84,6 +84,7 @@
         })
         console.log(vm.dogInfo.id);
       DogFactory.update({id: vm.dogInfo.id}, vm.dogInfo).$promise.then(function(data) {
+        console.log('dog info is: ', vm.dogInfo);
         console.log('yes dogs! ', data);
       })
     }
