@@ -14,6 +14,7 @@ class NotificationsController < ApplicationController
        body: "You have a request for a walk! Visit eDoggy"
       })
     render plain: message.status
+    flash[:success] = 'Message Sent'
   end
 
   def confirm
@@ -26,6 +27,7 @@ class NotificationsController < ApplicationController
       })
 
     render plain: message.status
+    flash[:success] = 'Message Sent'
   end
 
 end

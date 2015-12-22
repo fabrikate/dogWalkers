@@ -17,8 +17,10 @@ class DogsController < ApplicationController
     @dog = Dog.create(dog_params)
     if @dog.save
       render json: {id: @dog.id, name: @dog.name}, status: :created
+      flash[:success] = 'Dog created!'
     else
       render json: @dog.errors, status: :unprocessable_entity
+      flash[:alert] = 'Problem creating dog in database.'
     end
   end
 
@@ -29,14 +31,17 @@ class DogsController < ApplicationController
     @dog = Dog.find(params[:id])
     if @dog.update(dog_params)
       render json: { id: @dog.id, name: @dog.name }, status: :created
+      flash[:success] = 'Dog updated successfully!'
     else
       render json: @dog.errors, status: :unprocessable_entity
+      flash[:alert] = 'Problem updating dog.'
     end
   end
 
   def destroy
     @dog.destroy
     render json: {message: "#{@dog.id} deleted"}, status: :unauthorized
+    flash[:alert] = 'Dog deleted!'
   end
 
   private
