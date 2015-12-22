@@ -5,8 +5,8 @@
     <input type="text" id="zip" ng-model="query" class="text-info"/>
     <label for="sort">Sort by...</label>
     <select ="sort" class="dropdown-toggle" data-toggle="dropdown" ng-model="sorted">
-      <option value="-rating">rating</option>
-      <option value="name">name</option>
+      <option class="text-info" value="-dogWalkerRating">rating</option>
+      <option class="text-info" value="name">name</option>
     </select>
   </legend>
 
@@ -23,7 +23,7 @@
         Dog Walker rating from other users:
         <p ng-class="user.dogWalkerRating >= '3' ? 'text-success' : 'text-danger'">{{user.dogWalkerRating}} /5</p>
       </p>
-      <a href="/notifications/notify" class="btn btn-success">Schedule a Walk</a>
+      <button ng-click="vm.sendWalkRequest()" class="btn btn-success">Schedule a Walk</button>
     </div>
   </div>
 </div>

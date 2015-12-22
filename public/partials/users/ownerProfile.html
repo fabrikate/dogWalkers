@@ -14,7 +14,8 @@
       <h4 class="text-primary">Weight: {{vm.usersDog.weight}}</h4>
       <h4 ng-class="vm.usersDog.aggression < '3' ? 'text-success' : 'text-warning'">Aggression: {{vm.usersDog.aggression}} / 5</h4>
       <h4 ng-class="vm.usersDog.confidence > '3' ? 'text-success' : 'text-warning'">Confidence: {{vm.usersDog.confidence}} / 5</h4>
-      <a href="/notifications/confirm" class="btn btn-primary">Confirm Walk</a>
+      <button ng-click="vm.sendConfirmWalk()" class="btn btn-success">Confirm Walk</button>
+      <button ng-click="vm.sendDenyWalk()" class="btn btn-danger">Deny Walk</button>
     </div>
   </div>
 </div>

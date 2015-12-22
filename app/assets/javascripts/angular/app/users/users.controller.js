@@ -3,14 +3,13 @@
   .module('app.users')
   .controller('UsersController', UsersController);
 
-  UsersController.$inject = ['$routeParams', 'UserFactory', 'DogFactory'];
+  UsersController.$inject = ['$routeParams', 'UserFactory', 'DogFactory', '$http'];
 
-  function UsersController($routeParams, UserFactory, DogFactory) {
+  function UsersController($routeParams, UserFactory, DogFactory, $http) {
     // hide the main page
     $('#landingPage').hide();
     var vm = this;
     var spot;
-    var edittedUser, edittedDog;
     // get users from the db, assign them to an object to display in dogWalker Search
     var Users = UserFactory.query(function (data) {
       vm.allWalkers = [];
@@ -26,6 +25,7 @@
           dog_walker: item.dog_walker,
           dogWalkerRating: item.dogWalkerRating
         }
+        // push all users to a dog walker array that will be displayed if they are a dog walker
         vm.allWalkers.push(angular.copy(vm.dogWalkers));
         vm.dogWalkers = {
           id: '',
@@ -45,18 +45,6 @@
         }
       })
     })
-    vm.user = {
-      profileURL: '',
-      name: '',
-      streetAddress: '',
-      zipCode: '',
-      phoneNum: '',
-      dog_owner: '',
-      dog_walker: '',
-      email: '',
-      phoneNum: '',
-      dogs: []
-    }
     // query dog database to update / create dog
     DogFactory.query(function (data) {
       data.forEach(function (dog) {
@@ -82,10 +70,14 @@
       UserFactory.update({id: vm.user.id }, vm.user).$promise.then(function(data) {
           console.log('yes! ', data);
         })
-        console.log(vm.dogInfo.id);
       DogFactory.update({id: vm.dogInfo.id}, vm.dogInfo).$promise.then(function(data) {
-        console.log('dog info is: ', vm.dogInfo);
         console.log('yes dogs! ', data);
+      })
+    }
+    // send post request asking for appointment
+    vm.sendWalkRequest = function () {
+      $http.post('/notifications/notify', 'foo=bar').then(function(res) {
+        console.log('success, ', res);
       })
     }
   }
