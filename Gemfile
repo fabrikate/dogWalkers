@@ -13,12 +13,16 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-#
+#bootstrap and bootswatch for style "bones"
 gem "bootswatch-rails"
 gem "bootstrap-sass", '~> 3.3.5'
+#omni auth and facebook auth for login
 gem "omniauth-oauth2"
 gem "omniauth-facebook", "~> 1.4.1"
+#twilio for texting users
 gem 'twilio-ruby', "~> 3.12"
+#stripe gem for charging customers
+gem 'stripe'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

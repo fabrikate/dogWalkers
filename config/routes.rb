@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     resources :users
     resources :dogs
     resources :dog_walkers
+    resources :charges
   end
 end
