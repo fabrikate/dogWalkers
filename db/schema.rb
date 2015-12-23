@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223184928) do
+ActiveRecord::Schema.define(version: 20151223220757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,9 +49,10 @@ ActiveRecord::Schema.define(version: 20151223184928) do
     t.string   "confidence"
     t.string   "training"
     t.string   "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "pictureURL"
+    t.string   "additiionalPics", default: [],              array: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 20151223184928) do
     t.float    "dogWalkerRating"
     t.string   "streetAddress"
     t.string   "zipCode"
+    t.string   "additionalPics",   default: [],              array: true
   end
 
 end
