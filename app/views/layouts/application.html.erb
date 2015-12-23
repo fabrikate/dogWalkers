@@ -9,6 +9,15 @@
   <base href="/application.html.erb">
 </head>
 <body ng-app="app">
+  <% flash.each do |key, value| %>
+  <% if key == "notice" %>
+  <%= content_tag :div, value, class: "text-center alert alert-warning" %>
+  <% elsif key == "alert" %>
+  <%= content_tag :div, value, class: "text-center alert alert-danger" %>
+  <% else %>
+  <%= content_tag :div, value, class: "text-center alert alert-success" %>
+  <% end %>
+  <% end %>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -26,15 +35,6 @@
   </div>
 </nav>
 
-<% flash.each do |key, value| %>
-  <% if key == "notice" %>
-    <%= content_tag :div, value, class: "text-center alert alert-warning" %>
-  <% elsif key == "alert" %>
-    <%= content_tag :div, value, class: "text-center alert alert-danger" %>
-  <% else %>
-    <%= content_tag :div, value, class: "text-center alert alert-success" %>
-  <% end %>
-<% end %>
 
 <div class="container-fluid" ng-view>
 </div>
