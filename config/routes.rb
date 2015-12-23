@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   post '/notifications/notify', to: 'notifications#notify'
   post '/notifications/confirm', to: 'notifications#confirm'
 
+  resources :appointments
+
   scope '/api' do
     resources :users
     resources :dogs
     resources :dog_walkers
-    resources :charges
   end
 end

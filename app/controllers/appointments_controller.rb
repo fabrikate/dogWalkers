@@ -19,5 +19,6 @@ class AppointmentsController < ApplicationController
     )
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    redirect_to new_appointment_path
+  end
 end

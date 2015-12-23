@@ -21,6 +21,8 @@ gem "omniauth-oauth2"
 gem "omniauth-facebook", "~> 1.4.1"
 #twilio for texting users
 gem 'twilio-ruby', "~> 3.12"
+#rest-client is a dependency of stripe gem
+# gem 'rest-client'
 #stripe gem for charging customers
 gem 'stripe'
 # Use jquery as the JavaScript library
