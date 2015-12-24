@@ -5,10 +5,7 @@
 
   function telephone() {
     return function(phone) {
-      var first = phone.slice(0,3);
-      var middle = phone.slice(3, 6);
-      var end = phone.slice(6, 10);
-      var tel = '(' + first + ')' + middle + '-' + end;
+      var tel = '(' + phone.slice(0,3) + ')' + phone.slice(3, 6) + '-' + phone.slice(6, 10);
       if (phone) {
         return tel;
       }

@@ -23,7 +23,8 @@
           email: item.email,
           rating: '',
           dog_walker: item.dog_walker,
-          dogWalkerRating: item.dogWalkerRating
+          dogWalkerRating: item.dogWalkerRating,
+          additionalPics: item.additionalPics
         }
         // push all users to a dog walker array that will be displayed if they are a dog walker
         vm.allWalkers.push(angular.copy(vm.dogWalkers));
@@ -36,7 +37,8 @@
           email: '',
           rating: '',
           dog_walker: '',
-          dogWalkerRating: 0
+          dogWalkerRating: 0,
+          additionalPics: []
         }
         // display user information only when the $routeParams and user id match
         if (parseInt($routeParams.user_id) === item.id) {
@@ -57,7 +59,8 @@
             aggression: dog.aggression,
             confidence: dog.confidence,
             pictureURL: dog.pictureURL,
-            user_id: dog.user_id
+            user_id: dog.user_id,
+            additionalPics: dog.additiionalPics
           }
         }
       })
