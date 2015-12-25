@@ -24,7 +24,7 @@
           rating: '',
           dog_walker: item.dog_walker,
           dogWalkerRating: item.dogWalkerRating,
-          additionalPics: item.additionalPics
+          // additionalPics: item.additionalPics
         }
         // push all users to a dog walker array that will be displayed if they are a dog walker
         vm.allWalkers.push(angular.copy(vm.dogWalkers));
@@ -38,12 +38,14 @@
           rating: '',
           dog_walker: '',
           dogWalkerRating: 0,
-          additionalPics: []
+          // additionalPics: []
         }
+        vm.user.additionalPics.push(angular.copy(vm.addPic))
         // display user information only when the $routeParams and user id match
         if (parseInt($routeParams.user_id) === item.id) {
           spot = item;
           vm.user = data[data.indexOf(spot)]
+          console.log('vm.user is: ', vm.user);
         }
       })
     })

@@ -37,15 +37,12 @@
     <input class="col-lg-2 col-xs-2" type="phone" name="user[phoneNum]" placeholder="(206)555-5555" ng-model="vm.user.phoneNum"/>
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
-    <label for="morePics" class="headers col-lg-5 col-xs-5">Add more pictures of you? Recommended as pictures from facebook sign in are small</label>
+    <label for="morePics" class="headers col-lg-5 col-xs-5">Add more pictures: (Recommended)</label>
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
     <label class="headers col-lg-1 col-xs-1">URL: </label>
-    <input class="col-lg-2 col-xs-2" type="text" name="user[addtionalPics]" placeholder="recommended" id="morePics" ng-model="vm.user.additionalPics"/>
+    <input class="col-lg-2 col-xs-2" type="text" name="user[addtionalPics]" placeholder="recommended" id="morePics" ng-model="vm.addPics"/>
   </div>
-  <p class="text-info">
-    {{vm.user.additionalPics}}
-  </p>
   <label class="col-lg-1 col-xs-1"></label>
 
   <div id="owner" ng-if="vm.userType === 'owner'" class="container-fluid col-lg-offset-1 col-xs-offset-1 col-lg-4 col-xs-4">
@@ -75,13 +72,13 @@
       <label class="headers control-label" for="Confidence">Confidence</label>
       <input type="text" name="dogConfidence" id="Confidence" ng-model="vm.dogInfo.confidence"/>
     </div>
-    <a ng-href="/#/users/{{vm.user.id}}" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
+    <a ng-href="" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
   </div>
 
   <div class="row col-lg-offset-1 col-xs-offset-1 col-lg-3 col-xs-3" id="walker" ng-if="vm.userType === 'walker'">
     <legend class="headers">{{ vm.userType }}</legend>
     <p class="text-danger">By clicking below I agree that I will not harm any animals or people I meet through this website.</p>
-      <a href="/#/users/{{vm.user.id}}" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
+      <a href="" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
     </div>
   </div>
 </form>
