@@ -24,7 +24,7 @@
           rating: '',
           dog_walker: item.dog_walker,
           dogWalkerRating: item.dogWalkerRating,
-          // additionalPics: item.additionalPics
+          vm.additionalPics: item.additionalPics
         }
         // push all users to a dog walker array that will be displayed if they are a dog walker
         vm.allWalkers.push(angular.copy(vm.dogWalkers));
@@ -38,14 +38,13 @@
           rating: '',
           dog_walker: '',
           dogWalkerRating: 0,
-          // additionalPics: []
+          additionalPics: []
         }
         vm.user.additionalPics.push(angular.copy(vm.addPic))
         // display user information only when the $routeParams and user id match
         if (parseInt($routeParams.user_id) === item.id) {
           spot = item;
           vm.user = data[data.indexOf(spot)]
-          console.log('vm.user is: ', vm.user);
         }
       })
     })
@@ -72,12 +71,14 @@
     // information pushed to the database needs to mirror the database structure
     vm.updateUser = function () {
       vm.userType === 'owner' ? vm.user.dog_owner = true : vm.user.dog_walker = true;
+      vm.user.additionalPics.push(angular.copy(vm.addPic));
+      vm.user.save;
       UserFactory.update({id: vm.user.id }, vm.user).$promise.then(function(data) {
+        console.log('user is: ', vm.user);
           console.log('yes! ', data);
-        })
+        });
       DogFactory.update({id: vm.dogInfo.id}, vm.dogInfo).$promise.then(function(data) {
-        console.log('yes dogs! ', data);
-      })
+      });
     }
     // send post request asking for appointment
     vm.sendWalkRequest = function () {
