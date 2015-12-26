@@ -2,10 +2,15 @@
   <div class="row">
     <div class="col-lg-5 col-xs-5">
       <h1 class="headers">{{vm.user.name}}</h1>
-      <img ng-src="{{vm.user.profileURL}}" alt="profile picture" class="col-lg-11 col-xs-11" ng-if="!{{vm.user.additionalPics}}"/>
-      <p class="text-warning"> {{vm.user.additionalPics}}</p>
-      <div ng-repeat="pic in vm.user.additionalPics">
-        <img ng-src="{{pic}}" alt="profile picture" class="col-lg-11 col-xs-11" />
+      <!-- <img ng-src="{{vm.user.profileURL}}" alt="profile picture" class="col-lg-11 col-xs-11" ng-if="!{{vm.user.additionalPics}}"/> -->
+      <div id="scroller" style="width: 550px; height: 400px;">
+        <div class="innerScrollArea">
+          <ul ng-repeat="pic in vm.usersPic">
+            <li>
+              <img ng-src="{{pic.additionalURL}}" alt="profile picture" class="col-lg-11 col-xs-11" height="400"/>
+            </li>
+          </ul>
+        </div>
       </div>
       <h3 class="text-primary">email: {{vm.user.email}}</h3>
       <h3 class="text-primary">address: {{vm.user.streetAddress}},  {{vm.user.zipCode}}</h3>

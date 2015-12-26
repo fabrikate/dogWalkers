@@ -5,7 +5,8 @@
     'ngResource',
     'app.users',
     'app.dogs',
-    'app.dog_walkers'
+    'app.dog_walkers',
+    'app.additional_pics'
   ])
   .config(configModule);
 

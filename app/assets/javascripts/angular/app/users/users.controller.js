@@ -3,9 +3,9 @@
   .module('app.users')
   .controller('UsersController', UsersController);
 
-  UsersController.$inject = ['$routeParams', 'UserFactory', 'DogFactory', '$http'];
+  UsersController.$inject = ['$routeParams', 'UserFactory', 'DogFactory', '$http', 'AddPicFactory'];
 
-  function UsersController($routeParams, UserFactory, DogFactory, $http) {
+  function UsersController($routeParams, UserFactory, DogFactory, $http, AddPicFactory) {
     // hide the main page
     $('#landingPage').hide();
     var vm = this;
@@ -23,8 +23,7 @@
           email: item.email,
           rating: '',
           dog_walker: item.dog_walker,
-          dogWalkerRating: item.dogWalkerRating,
-          additionalPics: item.additionalPics
+          dogWalkerRating: item.dogWalkerRating
         }
         // push all users to a dog walker array that will be displayed if they are a dog walker
         vm.allWalkers.push(angular.copy(vm.dogWalkers));
@@ -37,8 +36,7 @@
           email: '',
           rating: '',
           dog_walker: '',
-          dogWalkerRating: 0,
-          additionalPics: []
+          dogWalkerRating: 0
         }
         // display user information only when the $routeParams and user id match
         if (parseInt($routeParams.user_id) === item.id) {
@@ -59,8 +57,7 @@
             aggression: dog.aggression,
             confidence: dog.confidence,
             pictureURL: dog.pictureURL,
-            user_id: dog.user_id,
-            additionalPics: dog.additiionalPics
+            user_id: dog.user_id
           }
         }
       })
@@ -69,19 +66,20 @@
     // update the user to the database
     vm.updateUser = function () {
       vm.userType === 'owner' ? vm.user.dog_owner = true : vm.user.dog_walker = true;
-      // if there are additional pictures, add them to the array of additional pictures.
-      if (vm.addPic) {
-        vm.user.additionalPics.push(angular.copy(vm.addPic))
-        vm.user.additionalPics.forEach(function(pic) {
-          UserFactory.save(pic)
-        })
-      }
       UserFactory.update({id: vm.user.id }, vm.user).$promise.then(function(data) {
         console.log('user is: ', vm.user);
           console.log('yes! ', data);
         });
       DogFactory.update({id: vm.dogInfo.id}, vm.dogInfo).$promise.then(function(data) {
       });
+      if (vm.addPic) {
+        vm.newPic = new AddPicFactory();
+        vm.newPic.user_id = vm.user.id;
+        vm.newPic.additionalURL = vm.addPic;
+        AddPicFactory.save(vm.newPic, function() {
+          console.log('yes? ', vm.newPic);
+        })
+      }
     }
     // send post request asking for appointment
     vm.sendWalkRequest = function () {
