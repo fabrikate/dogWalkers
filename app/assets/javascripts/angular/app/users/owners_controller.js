@@ -9,20 +9,7 @@
     $('#landingPage').hide();
     var vm = this;
     var ID = $routeParams.user_id;
-    // scrolling for user / dog photos
-    var scroller = $('#scroller div.innerScrollArea');
-    var scrollerContent = scroller.children('ul');
-    scrollerContent.children().clone().appendTo(scrollerContent);
-    var curX = 0;
-    scrollerContent.children().each(function() {
-      var $this = $(this);
-      $this.css('left', curX);
-      curx += $this.outerWidth(true);
-    });
-    var fullW = curX / 2;
-    var viewportW = scroller.width();
-    scroller.css('overflow-x', 'auto');
-
+    photoInterval = 3000;
     UserFactory.query(function(data) {
       data.forEach(function (item) {
         if (parseInt(ID) === item.id) {

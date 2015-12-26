@@ -3,6 +3,7 @@
   .module('app', [
     'ngRoute',
     'ngResource',
+    'ui.bootstrap',
     'app.users',
     'app.dogs',
     'app.dog_walkers',

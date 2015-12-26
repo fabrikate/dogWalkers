@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require angular/lib/angular.min.js
 //= require_tree ./angular/lib
+//= require angular/lib/ui-bootstrap-tpls.min.js
 //= require ./angular/app/app.module.js
 //= require ./angular/app/users/users.module
 //= require ./angular/app/dogs/dogs.module
