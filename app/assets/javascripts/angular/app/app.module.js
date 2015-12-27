@@ -7,7 +7,8 @@
     'app.users',
     'app.dogs',
     'app.dog_walkers',
-    'app.additional_pics'
+    'app.additional_pics',
+    'app.scheduleWalk'
   ])
   .config(configModule);
 

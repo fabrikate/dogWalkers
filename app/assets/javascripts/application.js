@@ -20,4 +20,5 @@
 //= require ./angular/app/dogs/dogs.module
 //= require ./angular/app/additional_pics/additional_pics.module
 //= require ./angular/app/dog_walkers/dog_walkers.module
+//= require ./angular/app/scheduleWalk/scheduleWalk.module
 //= require_tree .
