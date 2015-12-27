@@ -4,7 +4,7 @@
       <h1 class="headers">{{vm.user.name}}</h1>
       <img ng-src="{{vm.user.profileURL}}" alt="profile picture" class="col-lg-11 col-xs-11" ng-hide="{{vm.usersPic}}"/>
       <div class="col-lg-11 col-xs-11">
-        <uib-carousel interval="vm.photoInterval">
+        <uib-carousel>
           <uib-slide ng-repeat="pic in vm.usersPic" active="slide.active1">
             <img ng-src="{{pic.additionalURL}}" alt="profile picture"/>
           </uib-slide>
