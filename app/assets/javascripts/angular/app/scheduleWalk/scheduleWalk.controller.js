@@ -39,6 +39,13 @@
         }
       })
     })
-    console.log(vm.walk);
+    //create an instance of appointments without using new / create
+    //update them
+    vm.ownerConfirm = function() {
+    }
+    vm.walkerConfirm = function() {
+    }
+    vm.dogReturned = function() {
+    }
   }
 })();
