@@ -1,5 +1,5 @@
 <div class="" ng-controller="ScheduleWalkController" class="container-fluid">
-  <!-- Owner and Dog -->
+  <!-- Owner-->
   <div class="col-lg-6 col-xs-6">
     <div class="row">
       <legend class="headers"><h1>{{vm.user.name}} - Dog Owner</h1></legend>
@@ -12,15 +12,6 @@
         </uib-slide>
       </uib-carousel>
     </div>
-    <div class="row">
-      <!-- dog pictures go here -->
-      <img ng-src="{{vm.dog.pictureURL}}" alt="dog Picture" class="col-lg-7 col-xs-7"/>
-      <h2 class="text-primary">{{vm.dog.name}}</h2>
-      <h2 class="text-primary">Age: {{vm.dog.age}}</h2>
-      <h2 class="text-primary">Weight: {{vm.dog.weight}}</h2>
-      <h2 ng-class="vm.dog.aggression < '3' ? 'text-success' : 'text-warning'">Aggression: {{vm.dog.aggression}}/5</h2>
-      <h2 ng-class="vm.dog.confidence > '3' ? 'text-success' : 'text-warning'">Confidence: {{vm.dog.confidence}}/5</h2>
-    </div>
   </div>
   <!--Dog Walker -->
   <div class="col-lg-6 col-xs-6">
@@ -30,6 +21,16 @@
       <h2 class="text-info">Address: {{vm.walker.streetAddress}} Seattle, WA {{vm.walker.zipCode}}</h2>
       <h2 class="text-info">Email: {{vm.walker.email}}</h2>
       <img ng-src="{{vm.walker.profileURL}}" alt="walker profile" class="col-lg-5 col-xs-5"/>
+    </div>
+  </div>
+  <div class="col-lg-7 col-xs-7">
+    <div class="row">
+      <legend><h2 class="text-primary">{{vm.dog.name}}</h2></legend>
+      <img ng-src="{{vm.dog.pictureURL}}" alt="dog Picture" class="col-lg-7 col-xs-7"/>
+      <h2 class="text-primary">Age: {{vm.dog.age}}</h2>
+      <h2 class="text-primary">Weight: {{vm.dog.weight}}</h2>
+      <h2 ng-class="vm.dog.aggression < '3' ? 'text-success' : 'text-warning'">Aggression: {{vm.dog.aggression}}/5</h2>
+      <h2 ng-class="vm.dog.confidence > '3' ? 'text-success' : 'text-warning'">Confidence: {{vm.dog.confidence}}/5</h2>
     </div>
   </div>
 </div>

@@ -3,9 +3,9 @@
   .module('app.scheduleWalk')
   .controller('ScheduleWalkController', ScheduleWalkController);
 
-  ScheduleWalkController.$inject = ['$routeParams', 'UserFactory', 'DogFactory'];
+  ScheduleWalkController.$inject = ['$routeParams', 'UserFactory', 'DogFactory', 'AppointmentFactory'];
 
-  function ScheduleWalkController($routeParams, UserFactory, DogFactory) {
+  function ScheduleWalkController($routeParams, UserFactory, DogFactory, AppointmentFactory) {
     var vm = this;
     // hide the main page
     $('#landingPage').hide();
@@ -24,6 +24,10 @@
           vm.dog = dog;
         }
       })
+    })
+
+    AppointmentFactory.query(function(data) {
+      console.log(data);
     })
   }
 })();
