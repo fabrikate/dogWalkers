@@ -9,7 +9,7 @@
     $('#landingPage').hide();
     var vm = this;
     var ID = $routeParams.user_id;
-    photoInterval = 3000;
+    vm.photoInterval = 3000;
     UserFactory.query(function(data) {
       data.forEach(function (item) {
         if (parseInt(ID) === item.id) {
