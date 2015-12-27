@@ -10,6 +10,7 @@
     $('#landingPage').hide();
     var vm = this;
     var spot;
+    vm.current_user = $routeParams.user_id
     // get users from the db, assign them to an object to display in dogWalker Search
     var Users = UserFactory.query(function (data) {
       vm.allWalkers = [];

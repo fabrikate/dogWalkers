@@ -27,20 +27,18 @@
           vm.dogsPic.push(vm.usersDog.pictureURL)
         }
       })
-    //   AddPicFactory.query(function(item) {
-    //     if (parseInt(vm.usersDog.id) === item.dog_id) {
-    //       vm.dogsPic.push(item.additionalURL);
-    //     }
-    //   })
     })
+    
     AddPicFactory.query(function (data) {
       data.forEach(function (pic) {
         if (pic.user_id && parseInt(ID) === pic.user_id) {
           vm.usersPic.push( pic );
+          console.log('users pic is: ', pic);
+          vm.user.additionalPics.push(pic.additionalURL);
         }
         if (pic.dog_id && vm.usersDog.id === pic.dog_id) {
           vm.dogsPic.push( pic.additionalURL );
-          console.log('dogs ', vm.dogsPic)
+
         }
       })
     })

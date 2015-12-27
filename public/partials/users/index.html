@@ -23,7 +23,7 @@
         Dog Walker rating from other users:
         <p ng-class="user.dogWalkerRating >= '3' ? 'text-success' : 'text-danger'">{{user.dogWalkerRating}} /5</p>
       </p>
-      <button ng-click="vm.sendWalkRequest()" class="btn btn-success">Schedule a Walk</button>
+      <a ng-href="/scheduleWalk/{{vm.current_user}}/{{user.id}}/new" class="btn btn-success">Schedule a Walk</button>
     </div>
   </div>
 </div>
