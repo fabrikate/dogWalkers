@@ -3,10 +3,10 @@
     <div class="col-lg-5 col-xs-5">
       <h1 class="headers">{{vm.user.name}}</h1>
       <img ng-src="{{vm.user.profileURL}}" alt="profile picture" class="col-lg-11 col-xs-11" ng-hide="{{vm.usersPic}}"/>
-      <div id="slides_control">
-        <uib-carousel interval="photoInterval">
+      <div class="col-lg-11 col-xs-11">
+        <uib-carousel interval="vm.photoInterval">
           <uib-slide ng-repeat="pic in vm.usersPic" active="slide.active1">
-            <img ng-src="{{pic.additionalURL}}" alt="profile picture" class="col-lg-11 col-xs-11" />
+            <img ng-src="{{pic.additionalURL}}" alt="profile picture"/>
           </uib-slide>
         </uib-carousel>
       </div>
@@ -16,7 +16,11 @@
     </div>
     <div class="col-lg-6 col-xs-6">
       <h2 class="headers">{{vm.usersDog.name}}</h2>
-      <img ng-src="{{vm.usersDog.pictureURL}}" alt="dog pics" />
+      <uib-carousel interval="vm.photoInterval">
+        <uib-slide ng-repeat="dog in vm.dogsPic" active="slide.active2">
+          <img ng-src="{{dog}}" alt="dogPicture" />
+        </uib-slide>
+      </uib-carousel>
       <h4 class="text-primary">Age: {{vm.usersDog.age}}</h4>
       <h4 class="text-primary">Weight: {{vm.usersDog.weight}}</h4>
       <h4 ng-class="vm.usersDog.aggression < '3' ? 'text-success' : 'text-warning'">Aggression: {{vm.usersDog.aggression}} / 5</h4>

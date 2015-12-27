@@ -10,6 +10,8 @@
     var vm = this;
     var ID = $routeParams.user_id;
     vm.photoInterval = 3000;
+    vm.usersPic = [];
+    vm.dogsPic = [];
     UserFactory.query(function(data) {
       data.forEach(function (item) {
         if (parseInt(ID) === item.id) {
@@ -22,19 +24,22 @@
       data.forEach(function (dog) {
         if (ID === dog.user_id) {
           vm.usersDog = dog;
+          vm.dogsPic.push(vm.usersDog.pictureURL)
         }
       })
+    //   AddPicFactory.query(function(item) {
+    //     if (parseInt(vm.usersDog.id) === item.dog_id) {
+    //       vm.dogsPic.push(item.additionalURL);
+    //     }
+    //   })
     })
-    vm.usersPic = [];
-    vm.dogsPic = [];
     AddPicFactory.query(function (data) {
       data.forEach(function (pic) {
         if (pic.user_id && parseInt(ID) === pic.user_id) {
           vm.usersPic.push( pic );
-          console.log('users ', vm.usersPic)
         }
         if (pic.dog_id && vm.usersDog.id === pic.dog_id) {
-          vm.dogsPic.push( pic );
+          vm.dogsPic.push( pic.additionalURL );
           console.log('dogs ', vm.dogsPic)
         }
       })
