@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   post '/notifications/notify', to: 'notifications#notify'
   post '/notifications/confirm', to: 'notifications#confirm'
 
-
   scope '/api' do
     resources :users
     resources :dogs
