@@ -3,7 +3,7 @@
   <div class="col-lg-6 col-xs-6">
     <div class="row">
       <legend class="headers"><h1>{{vm.user.name}} - Dog Owner</h1></legend>
-      <h2 class="text-primary">Phone : {{vm.user.phoneNum}}</h2>
+      <h2 class="text-primary">Phone : {{vm.user.phoneNum | telephone }}</h2>
       <h2 class="text-primary">Address: {{vm.user.streetAddress}} Seattle, WA {{vm.user.zipCode}}</h2>
       <h2 class="text-primary">Email: {{vm.user.email}}</h2>
       <img ng-src="{{vm.user.profileURL}}" ng-hide="vm.user.additionalPics.length > 0" class="col-lg-5 col-xs-5"/>
@@ -18,7 +18,7 @@
   <div class="col-lg-6 col-xs-6">
     <div class="row">
       <legend class="headers"><h1>{{vm.walker.name}} - Dog Walker</h1></legend>
-      <h2 class="text-info">Phone: {{vm.walker.phoneNum}}</h2>
+      <h2 class="text-info">Phone: {{vm.walker.phoneNum | telephone }}</h2>
       <h2 class="text-info">Address: {{vm.walker.streetAddress}} Seattle, WA {{vm.walker.zipCode}}</h2>
       <h2 class="text-info">Email: {{vm.walker.email}}</h2>
       <img ng-src="{{vm.walker.profileURL}}" alt="walker profile" class="col-lg-5 col-xs-5"/>
