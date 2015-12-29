@@ -3,15 +3,17 @@
   .module('app.users')
   .controller('OwnersController', OwnersController);
 
-  OwnersController.$inject = ['$routeParams' ,'UserFactory', 'DogFactory', '$http', 'AddPicFactory'];
+  OwnersController.$inject = ['$routeParams' ,'UserFactory', 'DogFactory', '$http', 'AddPicFactory', 'AppointmentFactory'];
 
-  function OwnersController ($routeParams, UserFactory, DogFactory, $http, AddPicFactory) {
+  function OwnersController ($routeParams, UserFactory, DogFactory, $http, AddPicFactory, AppointmentFactory) {
     $('#landingPage').hide();
     var vm = this;
     var ID = $routeParams.user_id;
     vm.photoInterval = 3000;
     vm.usersPic = [];
     vm.dogsPic = [];
+    vm.usersWalks = [];
+    
     UserFactory.query(function(data) {
       data.forEach(function (item) {
         if (parseInt(ID) === item.id) {
@@ -28,17 +30,24 @@
         }
       })
     })
-    
+
     AddPicFactory.query(function (data) {
       data.forEach(function (pic) {
         if (pic.user_id && parseInt(ID) === pic.user_id) {
           vm.usersPic.push( pic );
-          console.log('users pic is: ', pic);
           vm.user.additionalPics.push(pic.additionalURL);
         }
         if (pic.dog_id && vm.usersDog.id === pic.dog_id) {
           vm.dogsPic.push( pic.additionalURL );
 
+        }
+      })
+    })
+    //show all past walks that are in progress / complete
+    AppointmentFactory.query(function(walks) {
+      walks.forEach(function(walk) {
+        if (walk.owner_id === parseInt(ID)) {
+          vm.usersWalks.push(walk);
         }
       })
     })

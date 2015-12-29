@@ -14,6 +14,7 @@
       <h3 class="text-primary">address: {{vm.user.streetAddress}},  {{vm.user.zipCode}}</h3>
       <h3 class="text-primary">phone: {{vm.user.phoneNum | telephone}}</h3>
     </div>
+
     <div class="col-lg-6 col-xs-6">
       <h2 class="headers">{{vm.usersDog.name}}</h2>
       <uib-carousel interval="vm.photoInterval">
@@ -25,10 +26,13 @@
       <h4 class="text-primary">Weight: {{vm.usersDog.weight}}</h4>
       <h4 ng-class="vm.usersDog.aggression < '3' ? 'text-success' : 'text-warning'">Aggression: {{vm.usersDog.aggression}} / 5</h4>
       <h4 ng-class="vm.usersDog.confidence > '3' ? 'text-success' : 'text-warning'">Confidence: {{vm.usersDog.confidence}} / 5</h4>
-      <div>
-        <button ng-click="vm.sendConfirmWalk()" class="btn btn-success">Confirm Walk</button>
-        <button ng-click="vm.sendDenyWalk()" class="btn btn-danger">Deny Walk</button>
-      </div>
     </div>
+  </div>
+  <div class="row col-lg-10 col-xs-10">
+    <h3 class="headers">Walk history</h3>
+    <p class="headers">If the date is in green, the transaction has been successfully completed.</p>
+    <ul ng-repeat="walk in vm.usersWalks">
+      <li ng-class="walk.dogReturnedConfirm ? 'text-success' : 'text-danger'">walk: {{walk.created_at | date:'short'}}</li>
+    </ul>
   </div>
 </div>
