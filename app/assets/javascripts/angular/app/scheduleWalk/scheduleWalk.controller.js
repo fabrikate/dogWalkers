@@ -49,6 +49,7 @@
         console.log(vm.currentWalk)
       })
     }
+    //button the walker presses when the walker confirms the appointment
     vm.walkerConfirm = function() {
       if (!vm.currentWalk) {
         $('#walkerCfm').attr('class', 'btn btn-danger').text('Walk not completed by owner');
@@ -63,8 +64,10 @@
             }
           })
         })
+        $('#walkerCfm').attr('disabled', 'disabled');
       }
     }
+    // walker presses the button when the dog is returned
     vm.dogReturned = function() {
       if (!vm.currentWalk) {
         $('#dogReturn').attr('class', 'btn btn-danger').text('Walk not completed by walker');
@@ -80,6 +83,7 @@
           })
         })
       }
+      $('#dogReturn').attr('disabled', 'disabled');
     }
   }
 })();
