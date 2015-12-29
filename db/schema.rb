@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151226175705) do
+ActiveRecord::Schema.define(version: 20151229181442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,16 @@ ActiveRecord::Schema.define(version: 20151226175705) do
     t.boolean  "walkerConfirm"
     t.boolean  "dogReturnedConfirm"
     t.float    "amountPayment"
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.integer  "walker_id"
+    t.float    "amountPayment"
     t.string   "stripeToken"
     t.string   "stripeEmail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "dog_walkers", force: :cascade do |t|

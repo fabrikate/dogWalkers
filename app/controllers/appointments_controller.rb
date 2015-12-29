@@ -3,22 +3,26 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    # Set amount of payment $10 for 30min $20 for hour
-    @amount = 1000
+  end
 
-    customer = Stripe::Customer.create(
-    :email => params[:stripeEmail],
-    :source => params[:stripeToken]
-    )
+  def show
+  end
 
-    charge = Stripe::Charge.create(
-    :customer => customer.id,
-    :amount => @amount,
-    :description => 'eDoggy dog walker charge',
-    :currency => 'usd'
-    )
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_appointment_path
+  def edit
+  end
+
+  def update
+  end
+
+  def destory
+
+  end
+
+  private
+  def appointments_params
+  end
+  
+  def appointment
+    @appointment = Appointment.find(params[:id]);
   end
 end
