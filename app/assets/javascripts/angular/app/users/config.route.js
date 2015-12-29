@@ -17,7 +17,7 @@
       controller: 'OwnersController',
       controllerAs: 'vm'
     })
-    .when('/dogWalkers', {
+    .when('/dogWalkers/:user_id', {
       templateUrl: '/partials/users/index.html',
       controller: 'UsersController',
       controllerAs: 'vm'
