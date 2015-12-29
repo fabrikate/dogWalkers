@@ -16,7 +16,7 @@
       walker_id: '',
       meet_at: '',
       created_at: new Date(),
-      amountPayment: '$10.00'
+      amountPayment: 10.00
     }
     //Get the current User
     vm.ownersPics = [];
@@ -39,13 +39,47 @@
         }
       })
     })
-    //create an instance of appointments without using new / create
     //update them
     vm.ownerConfirm = function() {
+      vm.newWalk = new AppointmentFactory;
+      vm.newWalk = vm.walk;
+      AppointmentFactory.save(vm.newWalk).$promise.then(function(data) {
+        console.log('data is: ', data);
+        vm.currentWalk = data.id;
+        console.log(vm.currentWalk)
+      })
     }
     vm.walkerConfirm = function() {
+      if (!vm.currentWalk) {
+        $('#walkerCfm').attr('class', 'btn btn-danger').text('Walk not completed by owner');
+      } else {
+        AppointmentFactory.query(function(details) {
+          details.forEach(function(apt) {
+            if (apt.id === vm.currentWalk) {
+              apt.walkerConfirm = true;
+              AppointmentFactory.update({id: apt.id}, apt).$promise.then(function(data) {
+                console.log('yes? ', data);
+              })
+            }
+          })
+        })
+      }
     }
     vm.dogReturned = function() {
+      if (!vm.currentWalk) {
+        $('#dogReturn').attr('class', 'btn btn-danger').text('Walk not completed by walker');
+      } else {
+        AppointmentFactory.query(function(details) {
+          details.forEach(function(apt) {
+            if (apt.id === vm.currentWalk) {
+              apt.dogReturnedConfirm = true;
+              AppointmentFactory.update({id: apt.id}, apt).$promise.then(function(data) {
+                console.log('yes? ', data);
+              })
+            }
+          })
+        })
+      }
     }
   }
 })();
