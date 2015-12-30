@@ -27,5 +27,10 @@
       controller: 'DashboardController',
       controllerAs: 'vm'
     })
+    .when('/dogWalker/profile/:user_id', {
+      templateUrl: '/partials/users/dogWalkerProfile.html',
+      controller: 'WalkerController',
+      controllerAs: 'vm'
+    })
   }
 })();
