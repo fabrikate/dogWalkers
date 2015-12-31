@@ -34,5 +34,17 @@
         }
       })
     })
+    vm.upVote = function () {
+      $('#upVote').attr('disabled', 'disabled');
+      vm.walker.dogWalkerRating = vm.walker.dogWalkerRating + 1 / 2;
+      if (vm.walker.dogWalkerRating > 5) {
+        vm.walker.dogWalkerRating = 5;
+      }
+      UserFactory.get({id: ID}, function (data) {
+        console.log(data);
+        data.dogWalkerRating = vm.walker.dogWalkerRating;
+        data.$save();
+      });
+    }
   }
 })();

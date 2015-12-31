@@ -1,5 +1,14 @@
 <div class="container-fluid" ng-controller="WalkerController">
   <div class="row" ng-if="vm.walker.dog_walker">
     <legend><h1 class="headers">{{vm.walker.name}}</h1></legend>
+    <img ng-src="{{vm.walker.profileURL}}" alt="dog walker picture" />
+    <h4 class="headers">Member since: {{vm.walker.created_at | date:'short'}}</h4>
+    <h4 class="headers">Phone: {{vm.walker.phoneNum | telephone}}</h4>
+    <h4 class="headers">Neighborhood: {{vm.walker.zipCode | zip2neighborhood }}</h4>
+    <div class="">
+      <h4 class="headers">Dog Walker Rating: {{vm.walker.dogWalkerRating}}</h4>
+      <button class="btn btn-xs btn-success" id="upVote" ng-click="vm.upVote()">⇧</button>
+      <button class="btn btn-xs btn-danger" id="downVote" ng-click="vm.downVote()">⇩</button>
+    </div>
   </div>
 </div>
