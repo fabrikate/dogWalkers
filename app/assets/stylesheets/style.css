@@ -12,6 +12,8 @@ body {
   z-index: -50;
   opacity: 0.8;
   position: relative;
+  width: 105%;
+  margin-top: -20px;
 }
 #howWeWork {
   z-index: 10;
@@ -26,7 +28,11 @@ body {
   top: 40%;
   border-radius: 10px;
   padding: 8px 8px 8px 8px;
+  text-align: center;
 }
+/*#signupLogin > a {
+  padding: 2px 2px 2px 2px;
+}*/
 .headers {
   color: white;
 }
