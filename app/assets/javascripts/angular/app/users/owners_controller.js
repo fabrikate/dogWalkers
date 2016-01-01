@@ -9,11 +9,10 @@
     $('#landingPage').hide();
     var vm = this;
     var ID = $routeParams.user_id;
-    vm.photoInterval = 3000;
     vm.usersPic = [];
     vm.dogsPic = [];
     vm.usersWalks = [];
-    
+
     UserFactory.query(function(data) {
       data.forEach(function (item) {
         if (parseInt(ID) === item.id) {
