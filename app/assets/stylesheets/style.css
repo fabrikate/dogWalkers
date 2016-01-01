@@ -27,6 +27,12 @@ body {
   padding: 5px 5px;
   padding-top: 35px;
 }
+#howImg {
+  padding-top: 55px;
+}
+#howImg > h2 {
+  margin-bottom: 20px;
+}
 #signupLogin {
   background-color: #222222;
   float: left;

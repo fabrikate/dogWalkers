@@ -41,6 +41,7 @@
     })
     //update them
     vm.ownerConfirm = function() {
+      $('#ownerCfm').attr('disabled', 'disabled');
       vm.newWalk = new AppointmentFactory;
       vm.newWalk = vm.walk;
       AppointmentFactory.save(vm.newWalk).$promise.then(function(data) {
