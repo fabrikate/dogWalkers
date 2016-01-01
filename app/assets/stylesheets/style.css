@@ -1,9 +1,4 @@
 /*NavBar Style*/
-#userName {
-  margin-top: 7%;
-  margin-bottom: auto;
-  color: white;
-}
 /*homepage background Images*/
 body {
   background-color: #222222;
@@ -19,6 +14,7 @@ body {
   z-index: 10;
   width: 100%;
   padding: 5px 5px;
+  padding-top: 35px;
 }
 #signupLogin {
   background-color: #222222;
@@ -30,9 +26,16 @@ body {
   padding: 8px 8px 8px 8px;
   text-align: center;
 }
-/*#signupLogin > a {
-  padding: 2px 2px 2px 2px;
-}*/
+#goldenSmile {
+  opacity: 0.8;
+}
 .headers {
   color: white;
+}
+.labelSmall {
+  text-decoration: none;
+  font-size: 20px;
+}
+option {
+  color: #8E65BA;
 }
