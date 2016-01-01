@@ -26,12 +26,12 @@ body {
   width: 100%;
   padding: 5px 5px;
   padding-top: 35px;
+  margin-bottom: 5%;
 }
 #howImg {
-  padding-top: 55px;
-}
-#howImg > h2 {
-  margin-bottom: 20px;
+  padding-top: 25px;
+  margin-bottom: 5%;
+  margin-left: 5%;
 }
 #signupLogin {
   background-color: #222222;
@@ -61,4 +61,10 @@ option {
 }
 .walkButtons {
   margin-left: 15px;
+}
+.glyphicon-chevron-right {
+  display: none;
+}
+.glyphicon-chevron-left {
+  display: none;
 }
