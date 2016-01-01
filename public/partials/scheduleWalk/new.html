@@ -45,9 +45,9 @@
       <h2 class="headers">Meet at: {{vm.walk.meet_at}}</h2>
       <p class="headers">Requested at: {{vm.walk.created_at | date:'short'}}</p>
       <div class="row">
-        <a ng-click="vm.ownerConfirm()" class="btn btn-info">Owner Confirm</a>
-        <button id="walkerCfm" ng-click="vm.walkerConfirm()" class="btn btn-info">Walker Confirm</button>
-        <button id="dogReturn" ng-click="vm.dogReturned()" class="btn btn-info">Dog Returned</button>
+        <a ng-click="vm.ownerConfirm()" class="btn btn-info walkButtons">Owner Confirm</a>
+        <button id="walkerCfm" ng-click="vm.walkerConfirm()" class="btn btn-info walkButtons">Walker Confirm</button>
+        <button id="dogReturn" ng-click="vm.dogReturned()" class="btn btn-info walkButtons">Dog Returned</button>
       </div>
     </div>
   </div>
