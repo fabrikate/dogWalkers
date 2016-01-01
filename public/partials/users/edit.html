@@ -25,7 +25,7 @@
 
   <div id="emailAddress" class="row col-lg-offset-2 col-xs-offset-2">
     <label class="headers control-label col-lg-1 col-xs-1" for="email">Email</label>
-    <input type="email" class="col-lg-3 col-xs-3" id="email" name="user[email]" placeholder="email" ng-model="vm.user.email"/>
+    <input type="email" class="col-lg-2 col-xs-2" id="email" name="user[email]" placeholder="email" ng-model="vm.user.email"/>
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
     <label class="headers control-label col-lg-1 col-xs-1" for="address">Address</label>
@@ -50,13 +50,19 @@
   <p class="text-info">{{vm.addPic}}</p>
   <div id="owner" ng-if="vm.userType === 'owner'" class="col-xs-offset-2 col-lg-4 col-xs-4">
     <legend class="headers">{{vm.userType}}</legend>
+    <!-- <div class="row col-lg-12 col-xs-12">
+      <label for="newDog" class="headers control-label">Add a new dog?</label>
+      <input type="radio" id="newDog" name="newDog" ng-model="vm.newDog" value="newDog"/>
+      <p class="text-info">{{vm.newDog}}</p>
+    </div> -->
     <div class="row col-lg-12 col-xs-12">
       <label class="headers control-label col-lg-5 col-xs-5" for="dogName">Dog's Name</label>
       <input type="text" name="dogName" id="dogName" placeholder="Lili" ng-model="vm.dogInfo.name"/>
     </div>
     <div class="row col-lg-12 col-xs-12">
-      <label class="headers control-label col-lg-5 col-xs-5" for="dogPicture" class="headers control-label">Dog Picture URL</label>
-      <input type="text" name="dogPicture" id="dogPicture" placeholder="www.facebook.com/photo" ng-model="vm.dogInfo.pictureURL"/>
+      <label class="headers control-label col-lg-5 col-xs-5" for="dogPicture" class="headers control-label">Dog Pictures URL</label>
+      <input type="text" name="dogPicture" id="dogPicture" placeholder="dogPicOne.jpg" ng-model="vm.dogInfo.pictureURL"/>
+      <input class="col-lg-offset-5 col-xs-offset-5" ng-hide="vm.dogInfo.pictureURL.length < 1" type="text" name="altDogPic" id="altDogPic" ng-model="vm.altDogPic" placeholder="dogPicTwo.jpg"/>
     </div>
     <div class="row col-lg-12 col-xs-12">
       <label class="headers control-label col-lg-5 col-xs-5" class="headers control-label" for="dogAge">Age (years)</label>
