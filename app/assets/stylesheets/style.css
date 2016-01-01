@@ -39,3 +39,6 @@ body {
 option {
   color: #8E65BA;
 }
+#Aggressive, #Confidence {
+  width: 25px;
+}
