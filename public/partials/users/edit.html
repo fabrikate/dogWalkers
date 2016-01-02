@@ -4,7 +4,7 @@
 <div class="row" ng-controller="UsersController">
   <h1 class="headers col-lg-4 col-lg-offset-2 col-xs-4 col-xs-offset-2">Edit your profile </h1>
 </div>
-<form class="container-fluid" ng-submit="vm.updateUser()">
+<form class="container-fluid animated fadeInDown" ng-submit="vm.updateUser()">
   <div class="row">
     <img class="img-circle" src="{{ vm.user.profileURL }}"/>
     <legend class="col-lg-offset-2 col-lg-3 headers">{{ vm.user.name}}</legend>
@@ -48,7 +48,7 @@
   </div>
   <label class="col-lg-1 col-xs-1"></label>
   <p class="text-info">{{vm.addPic}}</p>
-  <div id="owner" ng-if="vm.userType === 'owner'" class="col-xs-offset-2 col-lg-4 col-xs-4">
+  <div id="owner" ng-if="vm.userType === 'owner'" class="col-xs-offset-2 col-lg-4 col-xs-4 animated fadeInDown">
     <legend class="headers">{{vm.userType}}</legend>
     <!-- <div class="row col-lg-12 col-xs-12">
       <label for="newDog" class="headers control-label">Add a new dog?</label>
@@ -84,7 +84,7 @@
     <a ng-href="" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
   </div>
 
-  <div class="row col-xs-offset-2 col-lg-3 col-xs-3" id="walker" ng-if="vm.userType === 'walker'">
+  <div class="row col-xs-offset-2 col-lg-3 col-xs-3 animated fadeInDown" id="walker" ng-if="vm.userType === 'walker'">
     <legend class="headers">{{ vm.userType }}</legend>
     <p class="text-danger">By clicking below I agree that I will not harm any animals or people I meet through this website.</p>
       <a ng-href="" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
