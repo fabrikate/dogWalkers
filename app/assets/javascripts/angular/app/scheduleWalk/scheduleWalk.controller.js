@@ -17,7 +17,8 @@
       walker_id: '',
       meet_at: '',
       created_at: new Date(),
-      amountPayment: 10.00
+      amountPayment: 10.00,
+      walk_dateTime: ''
     }
     //Get the current User
     vm.ownersPics = [];

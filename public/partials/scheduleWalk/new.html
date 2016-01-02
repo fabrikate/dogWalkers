@@ -42,8 +42,16 @@
       <h3 class="headers">Dog: {{vm.dog.name}}</h3>
       <h3 class="headers">Owner: {{vm.user.name}}</h3>
       <h3 class="headers">Walker: {{vm.walker.name}}</h3>
-      <h3 class="headers">Meet at: {{vm.walk.meet_at}} or pick another date/time:</h3>
-      <input type="datetime-local" />
+      <h3 class="headers">Meet at: {{vm.walk.meet_at}}</h3>
+      <h3 class="headers">When?</h3>
+      <div class="col-lg-offset-1">
+        <label for="now" class="control-label headers">Now</label>
+        <input type="radio" name="time" ng-model="vm.when" id="now"/>
+        <label for="later" class="control-label headers">Later </label>
+        <input type="radio" name="time" value="later" ng-model="vm.when" id="later" />
+        <input type="datetime-local" name="time" ng-model="vm.walk.walk_dateTime" ng-if="vm.when === 'later'"/>
+        <p class="text-danger">{{vm.walk.walk_dateTime}}</p>
+      </div>
       <p class="headers">Requested at: {{vm.walk.created_at | date:'short'}}</p>
       <div class="row">
         <button id="ownerCfm" ng-click="vm.ownerConfirm()" class="btn btn-primary walkButtons">Owner Confirm</button>
