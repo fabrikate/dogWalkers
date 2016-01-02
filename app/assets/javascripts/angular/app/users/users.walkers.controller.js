@@ -36,15 +36,23 @@
     })
     vm.upVote = function () {
       $('#upVote').attr('disabled', 'disabled');
-      vm.walker.dogWalkerRating = vm.walker.dogWalkerRating + 1 / 2;
+      vm.walker.dogWalkerRating = vm.walker.dogWalkerRating + 0.5 / 2;
       if (vm.walker.dogWalkerRating > 5) {
         vm.walker.dogWalkerRating = 5;
       }
-      UserFactory.get({id: ID}, function (data) {
+      UserFactory.update({id: ID}, vm.walker).$promise.then(function (data) {
         console.log(data);
-        data.dogWalkerRating = vm.walker.dogWalkerRating;
-        data.$save();
-      });
+      })
+    }
+    vm.downVote = function () {
+      $('#downVote').attr('disabled', 'disabled');
+      vm.walker.dogWalkerRating = vm.walker.dogWalkerRating - 0.5 / 2;
+      if (vm.walker.dogWalkerRating < 0) {
+        vm.walker.dogWalkerRating = 0.1;
+      }
+      UserFactory.update({id: ID}, vm.walker).$promise.then(function (data) {
+        console.log(data);
+      })
     }
   }
 })();

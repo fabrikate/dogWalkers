@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160102040705) do
+ActiveRecord::Schema.define(version: 20160102210341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,10 +89,10 @@ ActiveRecord::Schema.define(version: 20160102040705) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "phoneNum"
-    t.float    "dogWalkerRating"
     t.string   "streetAddress"
     t.string   "zipCode"
     t.string   "additionalPics",   default: [],              array: true
+    t.float    "dogWalkerRating"
   end
 
 end
