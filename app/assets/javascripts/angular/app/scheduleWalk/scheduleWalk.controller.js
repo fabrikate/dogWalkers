@@ -41,15 +41,27 @@
         }
       })
     })
+    // if (vm.walk.walk_dateTime) {
+    //   vm.walk.walk_dateTime = vm.walk.walk_dateTime.toDateString() + ' ' + vm.walk.walk_dateTime.toLocaleTimeString();
+    // }
+    // vm.when === 'now' ? vm.newWalk.walk_dateTime = new Date() : console.log('later');
     //update them
     vm.ownerConfirm = function() {
       $('#ownerCfm').attr('disabled', 'disabled');
+      if (vm.when === 'now') {
+        vm.walk.walk_dateTime = vm.walk.created_at;
+      } else if (vm.when === 'later') {
+        vm.walk.walk_dateTime = vm.walk.walk_dateTime.toDateString() + ' ' + vm.walk.walk_dateTime.toLocaleTimeString();
+        console.log(vm.walk.walk_dateTime);
+        console.log(typeof vm.walk.walk_dateTime)
+      }
       vm.newWalk = new AppointmentFactory;
       vm.newWalk = vm.walk;
-      AppointmentFactory.save(vm.newWalk).$promise.then(function(data) {
+      vm.newWalk.ownerRequested = true;
+      console.log(vm.newWalk)
+      AppointmentFactory.update({id: vm.newWalk.id}, vm.newWalk).$promise.then(function(data) {
         console.log('data is: ', data);
         vm.currentWalk = data.id;
-        console.log(vm.currentWalk)
       })
       $('#ownerCfm').hide();
     }

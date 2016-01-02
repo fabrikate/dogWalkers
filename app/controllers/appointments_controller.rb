@@ -20,7 +20,7 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.create(appointments_params)
+    @appointment = appointment
     render json: @appointment, status: :ok
   end
 
@@ -31,18 +31,15 @@ class AppointmentsController < ApplicationController
     @appointment = appointment
     if @appointment.update(appointments_params)
       render json: {id: @appointment.id, owner_id: @appointment.owner_id, walker_id: @appointment.walker_id}, status: :ok
-      flash[:success] = 'Appointment updated!'
     else
       render json: @appointent.errors, status: :unprocessable_entity
-      flash[:alert] = 'Error updating appointment'
     end
   end
 
-  def destory
+  def destroy
     @appointment = appointment
     @appointment.destroy
-    render json: {message: "#{@appointment.id} deleted"}
-    flash[:success] = 'Appointment deleted'
+    render json: {message: "#{@appointment.id} deleted"}, status: :ok
   end
 
   private
@@ -56,7 +53,9 @@ class AppointmentsController < ApplicationController
     :meet_at,
     :walkerConfirm,
     :dogReturnedConfirm,
-    :amountPayment
+    :amountPayment,
+    :ownerRequested,
+    :walk_dateTime
     )
   end
 

@@ -15,10 +15,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       render json: {id: @user.id, email: @user.email }, status: :created
       redirect_to root_path
-      flash[:success] = 'User created'
     else
       render json: @user.errors, status: :unprocessable_entity
-      flash[:alert] = 'Error creating user'
     end
   end
 
@@ -29,18 +27,15 @@ class UsersController < ApplicationController
     @user = user
     if @user.update(user_params)
       render json: { id: @user.id, email: @user.email }, status: :ok
-      flash[:success] = 'User updated!'
     else
       render json: @user.errors, status: :unprocessable_entity
-      flash[:alert] = 'Error updating error!'
     end
   end
 
   def destroy
     @user = user
     @user.destroy
-    render json: {message: "#{@user.id} deleted"}, status: :unauthorized
-    flash[:success] = 'User deleted'
+    render json: {message: "#{@user.id} deleted"}, status: :ok
   end
 
   private
@@ -50,6 +45,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
+    :dogWalkerRating,
     :email,
     :password,
     :password_digest,
@@ -64,6 +60,8 @@ class UsersController < ApplicationController
     :dog_walker,
     :provider,
     :uid,
+    :created_at,
+    :updated_at,
     :oauth_token,
     :oauth_expires_at)
   end
