@@ -35,8 +35,8 @@
       })
     })
     vm.upVote = function () {
-      $('#upVote').attr('disabled', 'disabled');
-      vm.walker.dogWalkerRating = vm.walker.dogWalkerRating + 0.5 / 2;
+      $('.rating').attr('disabled', 'disabled');
+      vm.walker.dogWalkerRating = (vm.walker.dogWalkerRating + vm.walker.dogWalkerRating + 0.5) / 2;
       if (vm.walker.dogWalkerRating > 5) {
         vm.walker.dogWalkerRating = 5;
       }
@@ -45,8 +45,8 @@
       })
     }
     vm.downVote = function () {
-      $('#downVote').attr('disabled', 'disabled');
-      vm.walker.dogWalkerRating = vm.walker.dogWalkerRating - 0.5 / 2;
+      $('.rating').attr('disabled', 'disabled');
+      vm.walker.dogWalkerRating = (vm.walker.dogWalkerRating + vm.walker.dogWalkerRating - 0.5) / 2;
       if (vm.walker.dogWalkerRating < 0) {
         vm.walker.dogWalkerRating = 0.1;
       }

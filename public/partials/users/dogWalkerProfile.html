@@ -7,8 +7,8 @@
     <h4 class="headers">Neighborhood: {{vm.walker.zipCode | zip2neighborhood }}</h4>
     <div class="">
       <h4 class="headers">Dog Walker Rating: {{vm.walker.dogWalkerRating}}</h4>
-      <button class="btn btn-xs btn-success" id="upVote" ng-click="vm.upVote()">⇧</button>
-      <button class="btn btn-xs btn-danger" id="downVote" ng-click="vm.downVote()">⇩</button>
+      <button class="rating btn btn-xs btn-success" ng-click="vm.upVote()">⇧</button>
+      <button class="rating btn btn-xs btn-danger" ng-click="vm.downVote()">⇩</button>
     </div>
   </div>
 </div>
