@@ -1,6 +1,6 @@
 <div class="" ng-controller="ScheduleWalkController" class="container-fluid">
   <!-- Owner-->
-  <div class="col-lg-6 col-xs-6">
+  <div class="col-lg-offset-1 col-lg-5 col-xs-5">
     <div class="row">
       <legend class="headers"><h1>{{vm.user.name}} - Dog Owner</h1></legend>
       <h3 class="text-primary">Phone : {{vm.user.phoneNum | telephone }}</h3>
@@ -15,7 +15,7 @@
     </div>
   </div>
   <!--Dog Walker -->
-  <div class="col-lg-6 col-xs-6">
+  <div class="col-lg-5 col-xs-5">
     <div class="row">
       <legend class="headers"><h1>{{vm.walker.name}} - Dog Walker</h1></legend>
       <h3 class="text-info">Phone: {{vm.walker.phoneNum | telephone }}</h3>
@@ -25,18 +25,18 @@
     </div>
   </div>
   <!-- dog name -->
-  <div class="col-lg-offset-2 col-xs-offset-2 col-lg-7 col-xs-7">
+  <div class="col-lg-offset-3 col-xs-offset-2 col-lg-6 col-xs-6">
     <div class="row">
       <legend><h2 class="text-primary">{{vm.dog.name}}</h2></legend>
       <img ng-src="{{vm.dog.pictureURL}}" alt="dog Picture" class="col-lg-6 col-xs-6"/>
-      <h2 class="text-primary">Age: {{vm.dog.age}}</h2>
-      <h2 class="text-primary">Weight: {{vm.dog.weight}}</h2>
+      <h2 class="text-primary">Age: {{vm.dog.age | dogAge}}</h2>
+      <h2 class="text-primary">Weight: {{vm.dog.weight}} lbs</h2>
       <h2 ng-class="vm.dog.aggression < '3' ? 'text-success' : 'text-warning'">Aggression: {{vm.dog.aggression}}/5</h2>
       <h2 ng-class="vm.dog.confidence > '3' ? 'text-success' : 'text-warning'">Confidence: {{vm.dog.confidence}}/5</h2>
     </div>
   </div>
   <!-- appointment times -->
-  <div class="col-lg-offset-2 col-xs-offset-2 col-lg-7 col-xs-7">
+  <div class="col-lg-offset-3 col-xs-offset-2 col-lg-6 col-xs-6">
     <div class="row">
       <legend><h2 class="headers">Walk Appointment</h2></legend>
       <h2 class="headers">Dog: {{vm.dog.name}}</h2>
