@@ -31,10 +31,11 @@
   <div class="row col-lg-10 col-xs-10">
     <h3 class="headers">Walk history</h3>
     <p class="headers">If the date is in green, the transaction has been successfully completed.</p>
-    <ul ng-repeat="walk in vm.usersWalks">
-      <p class="text-info">{{walk}}</li>
-      <li ng-class="walk.dogReturnedConfirm ? 'text-success' : 'text-danger'">{{walk.created_at | date:'short'}}</li>
-      <li><a href="/#/dogWalkerProfile/{{walk.walker_id}}">Name</li>
+    <ul ng-repeat="walk in vm.usersWalks track by $index">
+      <li ng-class="walk.dogReturnedConfirm ? 'text-success' : 'text-danger'">
+        {{walk.created_at | date:'short'}}
+        <a href="/#/dogWalker/profile/{{walk.walker_id}}">See Details</a>
+      </li>
     </ul>
   </div>
 </div>
