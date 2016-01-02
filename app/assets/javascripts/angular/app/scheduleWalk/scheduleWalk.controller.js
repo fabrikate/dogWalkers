@@ -9,7 +9,7 @@
     var vm = this;
     // hide the main page
     $('#landingPage').hide();
-    // hide the buttons if they aren't needed.
+    //TODO: hide the buttons if they aren't needed.
     // object that resembles appointment DB
     vm.walk = {
       owner_id: '',

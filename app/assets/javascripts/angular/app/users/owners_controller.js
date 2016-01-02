@@ -18,6 +18,7 @@
         if (parseInt(ID) === item.id) {
           vm.user = item;
         }
+        console.log('value?', vm.usersWalks);
       })
     })
 
