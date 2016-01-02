@@ -4,8 +4,16 @@
     <img src="{{vm.dog.pictureURL}}" alt="dog picture" class="img-responsive col-lg-5 col-xs-5"/>
     <h3 class="headers">Age: {{vm.dog.age}}</h3>
     <h3 class="headers">Weight: {{vm.dog.weight}}</h3>
-    <h3 class="headers">Aggression: {{vm.dog.aggression}} /5</h3>
-    <h3 class="headers">Confidence: {{vm.dog.confidence}} /5</h3>
+    <div class="">
+      <h3 class="headers">Aggression: {{vm.dog.aggression}} /5</h3>
+      <button class="aggression btn btn-xs btn-success" ng-click="vm.upVote('aggression')">⇧</button>
+      <button class="aggression btn btn-xs btn-danger" ng-click="vm.downVote('aggression')">⇩</button>
+    </div>
+    <div class="">
+      <h3 class="headers">Confidence: {{vm.dog.confidence}} /5</h3>
+      <button class="confidence btn btn-xs btn-success" ng-click="vm.upVote('confidence')">⇧</button>
+      <button class="confidence btn btn-xs btn-danger" ng-click="vm.downVote('confidence')">⇩</button>
+    </div>
     <h3 class="headers" ng-show="vm.dogUser.name">Contact: {{vm.dogUser.name}}</h3>
     <h3 class="text-primary" ng-show="vm.dogUser.dog_walker"> Rating: {{vm.dog.rating}} /5</h3>
   </div>

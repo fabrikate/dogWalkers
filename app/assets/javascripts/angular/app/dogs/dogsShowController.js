@@ -18,9 +18,23 @@
             vm.dogUser = user;
           }
         })
-        console.log(vm.dogUser);
       })
     })
-
+    vm.upVote = function (type) {
+      var btn = '.' + type;
+      $(btn).attr('disabled', 'disabled');
+      vm.dog[type] = (Number(vm.dog[type]) + 0.5 + Number(vm.dog[type])) /2;
+      DogFactory.update({id: $routeParams.id}, vm.dog).$promise.then(function (data) {
+        console.log(data)
+      })
+    }
+    vm.downVote = function (type) {
+      var btn = '.' + type;
+      $(btn).attr('disabled', 'disabled');
+      vm.dog[type] = (Number(vm.dog[type]) - 0.5 + Number(vm.dog[type])) /2;
+      DogFactory.update({id: $routeParams.id}, vm.dog).$promise.then(function (data) {
+        console.log(data)
+      })
+    }
   }
 })();
