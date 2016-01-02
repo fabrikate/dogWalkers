@@ -41,10 +41,6 @@
         }
       })
     })
-    // if (vm.walk.walk_dateTime) {
-    //   vm.walk.walk_dateTime = vm.walk.walk_dateTime.toDateString() + ' ' + vm.walk.walk_dateTime.toLocaleTimeString();
-    // }
-    // vm.when === 'now' ? vm.newWalk.walk_dateTime = new Date() : console.log('later');
     //update them
     vm.ownerConfirm = function() {
       $('#ownerCfm').attr('disabled', 'disabled');
@@ -59,7 +55,7 @@
       vm.newWalk = vm.walk;
       vm.newWalk.ownerRequested = true;
       console.log(vm.newWalk)
-      AppointmentFactory.update({id: vm.newWalk.id}, vm.newWalk).$promise.then(function(data) {
+      AppointmentFactory.save({id: vm.newWalk.id}, vm.newWalk).$promise.then(function(data) {
         console.log('data is: ', data);
         vm.currentWalk = data.id;
       })
