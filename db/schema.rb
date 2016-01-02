@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229181442) do
+ActiveRecord::Schema.define(version: 20160102002252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20151229181442) do
     t.boolean  "walkerConfirm"
     t.boolean  "dogReturnedConfirm"
     t.float    "amountPayment"
+    t.boolean  "ownerRequested"
   end
 
   create_table "charges", force: :cascade do |t|

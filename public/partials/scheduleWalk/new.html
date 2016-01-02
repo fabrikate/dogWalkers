@@ -38,11 +38,12 @@
   <!-- appointment times -->
   <div class="col-lg-offset-3 col-xs-offset-2 col-lg-6 col-xs-6">
     <div class="row">
-      <legend><h2 class="headers">Walk Appointment</h2></legend>
-      <h2 class="headers">Dog: {{vm.dog.name}}</h2>
-      <h2 class="headers">Owner: {{vm.user.name}}</h2>
-      <h2 class="headers">Walker: {{vm.walker.name}}</h2>
-      <h2 class="headers">Meet at: {{vm.walk.meet_at}}</h2>
+      <legend><h3 class="headers">Walk Appointment</h3></legend>
+      <h3 class="headers">Dog: {{vm.dog.name}}</h3>
+      <h3 class="headers">Owner: {{vm.user.name}}</h3>
+      <h3 class="headers">Walker: {{vm.walker.name}}</h3>
+      <h3 class="headers">Meet at: {{vm.walk.meet_at}} or pick another date/time:</h3>
+      <input type="datetime-local" />
       <p class="headers">Requested at: {{vm.walk.created_at | date:'short'}}</p>
       <div class="row">
         <button id="ownerCfm" ng-click="vm.ownerConfirm()" class="btn btn-primary walkButtons">Owner Confirm</button>

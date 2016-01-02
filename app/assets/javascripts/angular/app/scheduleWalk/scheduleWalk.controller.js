@@ -9,6 +9,7 @@
     var vm = this;
     // hide the main page
     $('#landingPage').hide();
+    // hide the buttons if they aren't needed.
     // object that resembles appointment DB
     vm.walk = {
       owner_id: '',
@@ -49,6 +50,7 @@
         vm.currentWalk = data.id;
         console.log(vm.currentWalk)
       })
+      $('#ownerCfm').hide();
     }
     //button the walker presses when the walker confirms the appointment
     vm.walkerConfirm = function() {
