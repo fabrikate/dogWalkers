@@ -22,11 +22,6 @@
       controller: 'UsersController',
       controllerAs: 'vm'
     })
-    .when('/dogWalkers/:user_id/schedule', {
-      templateUrl: '/partials/users/dashboard.html',
-      controller: 'DashboardController',
-      controllerAs: 'vm'
-    })
     .when('/dogWalker/profile/:user_id', {
       templateUrl: '/partials/users/dogWalkerProfile.html',
       controller: 'WalkerController',

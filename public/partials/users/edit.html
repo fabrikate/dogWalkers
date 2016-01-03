@@ -6,7 +6,7 @@
 </div>
 <form class="container-fluid animated fadeInDown" ng-submit="vm.updateUser()">
   <div class="row">
-    <img class="img-circle" src="{{ vm.user.profileURL }}"/>
+    <img class="img-circle" id="editPhoto" src="{{ vm.user.profileURL }}"/>
     <legend class="col-lg-offset-2 col-lg-3 headers">{{ vm.user.name}}</legend>
   </div>
   <div id="ownerOrWalker" class="row col-lg-offset-2 col-xs-offset-2">
@@ -44,7 +44,7 @@
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
     <label class="headers col-lg-1 col-xs-1">URL: </label>
-    <input class="col-lg-2 col-xs-2" type="text" name="user[addtionalPics]" placeholder="recommended" id="morePics" ng-model="vm.addPic"/>
+    <input class="col-lg-2 col-xs-2" type="url" name="user[addtionalPics]" placeholder="recommended" id="morePics" ng-model="vm.addPic"/>
   </div>
   <label class="col-lg-1 col-xs-1"></label>
   <p class="text-info">{{vm.addPic}}</p>
@@ -62,7 +62,7 @@
     <div class="row col-lg-12 col-xs-12">
       <label class="headers control-label col-lg-5 col-xs-5" for="dogPicture" class="headers control-label">Dog Pictures URL</label>
       <input type="text" name="dogPicture" id="dogPicture" placeholder="dogPicOne.jpg" ng-model="vm.dogInfo.pictureURL"/>
-      <input class="col-lg-offset-5 col-xs-offset-5" ng-hide="vm.dogInfo.pictureURL.length < 1" type="text" name="altDogPic" id="altDogPic" ng-model="vm.altDogPic" placeholder="dogPicTwo.jpg"/>
+      <input class="col-lg-offset-5 col-xs-offset-5" ng-hide="vm.dogInfo.pictureURL.length < 1" type="url" name="altDogPic" id="altDogPic" ng-model="vm.altDogPic" placeholder="dogPicTwo.jpg"/>
     </div>
     <div class="row col-lg-12 col-xs-12">
       <label class="headers control-label col-lg-5 col-xs-5" class="headers control-label" for="dogAge">Age (years)</label>
@@ -86,6 +86,12 @@
 
   <div class="row col-xs-offset-2 col-lg-3 col-xs-3 animated fadeInDown" id="walker" ng-if="vm.userType === 'walker'">
     <legend class="headers">{{ vm.userType }}</legend>
+    <label class="headers control-label" for="dnd">Do not Disturb?</label>
+    <p class="headers"><i>This means you will not be searchable for dog walk appointments</i></p>
+    <label for="yes" class="headers">On</label>
+    <input type="radio" name="dnd" value="true" id="yes" ng-model="vm.doNotDisturb"/>
+    <label for="no" class="headers">Off</label>
+    <input type="radio" name="dnd" value="false" id="no" ng-model="vm.doNotDisturb"/>
     <p class="text-danger">By clicking below I agree that I will not harm any animals or people I meet through this website.</p>
       <a ng-href="" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
     </div>

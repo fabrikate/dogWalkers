@@ -73,3 +73,7 @@ option {
 #logoDown {
   margin-top: 50px;
 }
+#editPhoto {
+  height: 50px;
+  width: 50px;
+}

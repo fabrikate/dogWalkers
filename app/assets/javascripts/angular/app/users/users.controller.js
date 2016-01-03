@@ -67,6 +67,7 @@
     // update the user to the database
     vm.updateUser = function () {
       vm.userType === 'owner' ? vm.user.dog_owner = true : vm.user.dog_walker = true;
+      vm.doNotDisturb === 'true' ? vm.user.doNotDisturb = true : vm.user.doNotDisturb = false;
       UserFactory.update({id: vm.user.id }, vm.user).$promise.then(function(data) {
         console.log('user is: ', vm.user);
           console.log('yes! ', data);

@@ -46,6 +46,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
     :dogWalkerRating,
+    :doNotDisturb,
     :email,
     :password,
     :password_digest,
