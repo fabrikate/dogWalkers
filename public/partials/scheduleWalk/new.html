@@ -52,8 +52,9 @@
         <input type="datetime-local" name="time" ng-model="vm.walk.walk_dateTime" ng-if="vm.when === 'later'"/>
       </div>
       <p class="headers">Requested at: {{vm.walk.created_at | date:'short'}}</p>
+      <p class="headers">{{vm.walk.ownerRequested}}</p>
       <div class="row">
-        <button id="ownerCfm" ng-click="vm.ownerConfirm()" class="btn btn-primary walkButtons">Owner Confirm</button>
+        <a id="ownerCfm" ng-hide="vm.walk.ownerRequested" ng-click="vm.ownerConfirm()" class="btn btn-primary walkButtons">Owner Confirm</a>
         <button id="walkerCfm" ng-click="vm.walkerConfirm()" class="btn btn-info walkButtons">Walker Confirm</button>
         <button id="dogReturn" ng-click="vm.dogReturned()" class="btn btn-success walkButtons">Dog Returned</button>
       </div>

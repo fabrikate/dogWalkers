@@ -12,9 +12,9 @@
       controller: 'ScheduleWalkController',
       controllerAs: 'vm'
     })
-    .when('/scheduleWalk/:user_id/:walker_id', {
+    .when('/scheduleWalk/:user_id/:walker_id/:walk_id', {
       templateUrl: '/partials/scheduleWalk/proposed.html',
-      controller: 'ScheduleWalkController',
+      controller: 'WalkController',
       controllerAs: 'vm'
     })
   }
