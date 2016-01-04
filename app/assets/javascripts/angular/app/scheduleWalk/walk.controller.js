@@ -37,5 +37,39 @@
         console.log('error!');
       }
     }
+    vm.walkerConfirm = function() {
+      if (!vm.currentWalk) {
+        $('#walkerCfm').attr('class', 'btn btn-danger').text('Walk not completed by owner');
+      } else {
+        AppointmentFactory.query(function(details) {
+          details.forEach(function(apt) {
+            if (apt.id === vm.currentWalk) {
+              apt.walkerConfirm = true;
+              AppointmentFactory.update({id: apt.id}, apt).$promise.then(function(data) {
+                console.log('yes? ', data);
+              })
+            }
+          })
+        })
+        $('#walkerCfm').attr('disabled', 'disabled');
+      }
+    }
+    vm.dogReturned = function() {
+      if (!vm.currentWalk) {
+        $('#dogReturn').attr('class', 'btn btn-danger').text('Walk not completed by walker');
+      } else {
+        AppointmentFactory.query(function(details) {
+          details.forEach(function(apt) {
+            if (apt.id === vm.currentWalk) {
+              apt.dogReturnedConfirm = true;
+              AppointmentFactory.update({id: apt.id}, apt).$promise.then(function(data) {
+                console.log('yes? ', data);
+              })
+            }
+          })
+        })
+      }
+      $('#dogReturn').attr('disabled', 'disabled');
+    }
   }
 })();

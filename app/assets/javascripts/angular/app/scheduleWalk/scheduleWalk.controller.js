@@ -9,7 +9,7 @@
     var vm = this;
     // hide the main page
     $('#landingPage').hide();
-    //TODO: hide the buttons if they aren't needed.
+
     // object that resembles appointment DB
     vm.walk = {
       owner_id: '',
@@ -41,7 +41,6 @@
         }
       })
     })
-    //update them
     vm.ownerConfirm = function() {
       $('#ownerCfm').attr('disabled', 'disabled');
       if (vm.when === 'now') {
@@ -59,43 +58,6 @@
         console.log('data is: ', data);
         vm.currentWalk = data.id;
       })
-      $('#ownerCfm').hide();
-    }
-    //button the walker presses when the walker confirms the appointment
-    vm.walkerConfirm = function() {
-      if (!vm.currentWalk) {
-        $('#walkerCfm').attr('class', 'btn btn-danger').text('Walk not completed by owner');
-      } else {
-        AppointmentFactory.query(function(details) {
-          details.forEach(function(apt) {
-            if (apt.id === vm.currentWalk) {
-              apt.walkerConfirm = true;
-              AppointmentFactory.update({id: apt.id}, apt).$promise.then(function(data) {
-                console.log('yes? ', data);
-              })
-            }
-          })
-        })
-        $('#walkerCfm').attr('disabled', 'disabled');
-      }
-    }
-    // walker presses the button when the dog is returned
-    vm.dogReturned = function() {
-      if (!vm.currentWalk) {
-        $('#dogReturn').attr('class', 'btn btn-danger').text('Walk not completed by walker');
-      } else {
-        AppointmentFactory.query(function(details) {
-          details.forEach(function(apt) {
-            if (apt.id === vm.currentWalk) {
-              apt.dogReturnedConfirm = true;
-              AppointmentFactory.update({id: apt.id}, apt).$promise.then(function(data) {
-                console.log('yes? ', data);
-              })
-            }
-          })
-        })
-      }
-      $('#dogReturn').attr('disabled', 'disabled');
     }
   }
 })();
