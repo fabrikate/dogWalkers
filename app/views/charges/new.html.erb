@@ -11,7 +11,11 @@
 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
   data-description="A 30 minute dog walk"
+  data-email='<%= @user.email %>'
+  data-zip-code="true",
+  data-image="assets/logo2.png"
   data-amount="1500"
   data-locale="auto">
 </script>
 <% end %>
+<h2 class="text-info"><%= @user.email %></h2>

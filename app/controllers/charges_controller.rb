@@ -1,10 +1,13 @@
 class ChargesController < ApplicationController
+
   def new
+    @user = User.find(current_user.id)
   end
 
   def create
-      # Set amount of payment $10 for 30min $20 for hour
-      @amount = 1000
+      # Set amount of payment $15 for 30min
+      @amount = 1500
+      @user = User.find(current_user.id)
 
       customer = Stripe::Customer.create(
       :email => params[:stripeEmail],

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/signout', to: 'sessions#destroy', as: 'signout'
   resource :sessions, only: [:create, :destroy]
-  resource :charges, only: [:new, :create];
+  resources :charges, only: [:new, :create]
 
   post '/twilio/voice', to: 'twilio#voice'
   post '/notifications/notify', to: 'notifications#notify'
