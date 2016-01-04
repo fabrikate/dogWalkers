@@ -5,13 +5,13 @@
     <p><%= flash[:error] %></p>
   </div>
   <% end %>
-  <label class="amount"><span>Amount: $10.00</span</label>
+  <label class="amount"><span class="headers">Amount: $15.00</span</label>
 </article>
 
 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
   data-description="A 30 minute dog walk"
-  data-amount="1000"
+  data-amount="1500"
   data-locale="auto">
 </script>
 <% end %>

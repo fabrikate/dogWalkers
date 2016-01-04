@@ -29,6 +29,9 @@
         });
         $('#walkerCfm').attr('disabled', 'disabled');
         $('#dogReturn').attr('disabled', 'disabled');
+        $('#pays').one("click", function() {
+          $('#pays').attr('class', 'btn btn-success disabled');
+        })
       } else if ( apt.walkerConfirm ) {
         for ( var i = 0; i < 2; i++ ) {
           $(headers[i]).attr('class', 'text-default');
