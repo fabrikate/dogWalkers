@@ -3,9 +3,9 @@
   .module('app.scheduleWalk')
   .controller('WalkController', WalkController);
 
-  WalkController.$inject = ['$routeParams', 'AppointmentFactory', 'UserFactory', 'DogFactory', '$http'];
+  WalkController.$inject = ['$routeParams', 'AppointmentFactory', 'UserFactory', 'DogFactory', 'AddPicFactory', '$http'];
 
-  function WalkController ($routeParams, AppointmentFactory, UserFactory, DogFactory, $http) {
+  function WalkController ($routeParams, AppointmentFactory, UserFactory, DogFactory, AddPicFactory, $http) {
     var vm = this;
     $('#landingPage').hide();
     var userID = $routeParams.user_id;
@@ -25,32 +25,37 @@
     function progressBar(apt) {
       // first will always be active to get to the site
       $('#step1').attr('class', 'text-default');
-      var headers = ['#step2', '#step3', '#step4', '#step5'];
+      var headers = ['#step2', '#step3', '#step4', '#step5',];
       // if the walk is canceled, diabled all progress steps
       if (apt.walkerConfirm === false) {
         headers.forEach(function (step) {
           $(step).attr('class', 'text-canceled');
         });
+      $('#step6').attr('class', 'text-canceled');  
       $('#pays').attr('disabled', 'disabled');
       $('#walkerCfm').attr('disabled', 'disabled');
       $('#dogReturn').attr('disabled', 'disabled');
+      $('#walkerDny').attr('disabled', 'disabled');
       // if the payment is processed, all other steps are done
       } else if ( apt.paymentSubmitted ) {
         $('#pays').attr('disabled', 'disabled');
         $('#walkerCfm').attr('disabled', 'disabled');
         $('#dogReturn').attr('disabled', 'disabled');
+        $('#walkerDny').attr('disabled', 'disabled');
         headers.forEach(function (step) {
           $(step).attr('class', 'text-default');
         });
       } else if ( apt.dogReturnedConfirm ) {
         $('#walkerCfm').attr('disabled', 'disabled');
         $('#dogReturn').attr('disabled', 'disabled');
+        $('#walkerDny').attr('disabled', 'disabled');
         headers.forEach(function(step) {
           $(step).attr('class', 'text-default');
         });
       } else if ( apt.walkerConfirm ) {
         $(headers[0]).attr('class', 'text-default');
         $('#walkerCfm').attr('disabled', 'disabled');
+        $('#walkerDny').attr('disabled', 'disabled');
       } else {
         console.log('error!');
       }

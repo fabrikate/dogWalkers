@@ -104,3 +104,11 @@ option {
   font-style: italic;
   text-decoration: line-through;
 }
+.modal {
+  display: inline-flex;
+  margin-top: 100px;
+  text-align: center;
+}
+#checkout {
+  display: inline-flex;
+}

@@ -1,21 +1,32 @@
-<%= form_tag charges_path do %>
-<article>
-  <% if flash[:error].present? %>
-  <div id="error_explanation">
-    <p><%= flash[:error] %></p>
-  </div>
-  <% end %>
-  <label class="amount"><span class="headers">Amount: $15.00</span</label>
-</article>
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Checkout</h3>
+      </div>
+      <div class="modal-body">
+        <h3>Pay $12 for a 30min walk</h3>
+        <%= form_tag charges_path do %>
+        <article class="col-lg-offset-2">
+          <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+          <% end %>
+          <label class="amount"><span class="headers">Amount: $12.00</span</label>
+          </article>
 
-<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-  data-description="A 30 minute dog walk"
-  data-email='<%= @user.email %>'
-  data-zip-code="true",
-  data-image="assets/logo2.png"
-  data-amount="1500"
-  data-locale="auto">
-</script>
-<% end %>
-<h2 class="text-info"><%= @user.email %></h2>
+          <script src="https://checkout.stripe.com/checkout.js" id="stripeBtn" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A 30 minute dog walk"
+          data-email='<%= @user.email %>'
+          data-zip-code="true",
+          data-image="assets/logo2.png"
+          data-amount="1200"
+          data-locale="auto">
+          </script>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
