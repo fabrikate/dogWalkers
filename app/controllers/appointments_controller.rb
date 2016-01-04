@@ -55,7 +55,8 @@ class AppointmentsController < ApplicationController
     :dogReturnedConfirm,
     :amountPayment,
     :ownerRequested,
-    :walk_dateTime
+    :walk_dateTime,
+    :paymentSubmitted
     )
   end
 

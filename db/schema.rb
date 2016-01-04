@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104010932) do
+ActiveRecord::Schema.define(version: 20160104012249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,15 @@ ActiveRecord::Schema.define(version: 20160104010932) do
     t.integer  "owner_id"
     t.integer  "dog_id"
     t.integer  "walker_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "meet_at"
     t.boolean  "walkerConfirm"
     t.boolean  "dogReturnedConfirm"
     t.float    "amountPayment"
     t.boolean  "ownerRequested"
     t.string   "walk_dateTime"
+    t.boolean  "paymentSubmitted",   default: false
   end
 
   create_table "charges", force: :cascade do |t|
@@ -94,7 +95,6 @@ ActiveRecord::Schema.define(version: 20160104010932) do
     t.string   "additionalPics",   default: [],                 array: true
     t.float    "dogWalkerRating"
     t.boolean  "doNotDisturb",     default: false
-    t.boolean  "paymentSubmitted", default: false
   end
 
 end

@@ -8,12 +8,16 @@
     <h4 id="step3" class="headers">Walker walking dog</h4>
     <button id="dogReturn" type="button" class="detailsBtn btn btn-success" ng-click="vm.dogReturned()">Dog Returned</button>
     <h4 id="step4" class="headers">Walker returned dog</h4>
-    <a href="charges/new" id="pays" target="blank" class="btn btn-success">Owner Pays</a>
+    <a href="charges/new" id="pays" ng-click="vm.paymentSubmit()" target="blank" class="btn btn-success">Owner Pays</a>
     <h4 id="step5" class="headers">Walker paid</h4>
   </aside>
 <!-- Appintment Details -->
   <div class="col-lg-6 col-xs-6">
     <legend class="headers"><h2>Appointment Details</h2></legend>
+    <h4 class="text-info">own req{{vm.walk.ownerRequested}}</h4>
+    <h4 class="text-info"> walk req{{vm.walk.walkerConfirm}}</h4>
+    <h4 class="text-info">dog ret{{vm.walk.dogReturnedConfirm}}</h4>
+    <h4 class="text-info">pay sub{{vm.walk.paymentSubmitted}}</h4>
     <h4 class="text-primary">Owner: <a ng-href="/#/users/{{vm.owner.id}}">{{vm.owner.name}}</a></h4>
     <h4 class="text-primary">Dog: <a ng-href="/#/dogs/{{vm.dog.id}}">{{vm.dog.name}}</a></h4>
     <h4 class="text-primary">Walker: <a ng-href="/#/dogWalker/profile/{{vm.walker.id}}">{{vm.walker.name}}</a></h4>

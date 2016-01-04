@@ -1,7 +1,7 @@
 (function () {
   angular
   .module('app.scheduleWalk')
-  .controller('WalkController', WalkController)
+  .controller('WalkController', WalkController);
 
   WalkController.$inject = ['$routeParams', 'AppointmentFactory', 'UserFactory', 'DogFactory'];
 
@@ -15,7 +15,7 @@
     //variables to store walk information
     vm.walk = AppointmentFactory.get({id: walkID}, function () {
       vm.dogID = vm.walk.dog_id;
-      vm.dog = DogFactory.get({id: vm.dogID})
+      vm.dog = DogFactory.get({id: vm.dogID});
       progressBar(vm.walk);
     });
     vm.owner = UserFactory.get({id: userID});
@@ -29,9 +29,6 @@
         });
         $('#walkerCfm').attr('disabled', 'disabled');
         $('#dogReturn').attr('disabled', 'disabled');
-        $('#pays').one("click", function() {
-          $('#pays').attr('class', 'btn btn-success disabled');
-        })
       } else if ( apt.walkerConfirm ) {
         for ( var i = 0; i < 2; i++ ) {
           $(headers[i]).attr('class', 'text-default');
@@ -44,38 +41,25 @@
       }
     }
     vm.walkerConfirm = function() {
-      if (!vm.currentWalk) {
-        $('#walkerCfm').attr('class', 'btn btn-danger').text('Walk not completed by owner');
-      } else {
-        AppointmentFactory.query(function(details) {
-          details.forEach(function(apt) {
-            if (apt.id === vm.currentWalk) {
-              apt.walkerConfirm = true;
-              AppointmentFactory.update({id: apt.id}, apt).$promise.then(function(data) {
-                console.log('yes? ', data);
-              })
-            }
-          })
-        })
+      vm.walk.walkerConfirm = true;
+      AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function() {
+        console.log('yes');
+      })
         $('#walkerCfm').attr('disabled', 'disabled');
-      }
-    }
+    };
     vm.dogReturned = function() {
-      if (!vm.currentWalk) {
-        $('#dogReturn').attr('class', 'btn btn-danger').text('Walk not completed by walker');
-      } else {
-        AppointmentFactory.query(function(details) {
-          details.forEach(function(apt) {
-            if (apt.id === vm.currentWalk) {
-              apt.dogReturnedConfirm = true;
-              AppointmentFactory.update({id: apt.id}, apt).$promise.then(function(data) {
-                console.log('yes? ', data);
-              })
-            }
-          })
+        vm.walk.dogReturnedConfirm = true;
+        AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function() {
+          console.log('yes');
         })
-      }
       $('#dogReturn').attr('disabled', 'disabled');
-    }
+    };
+    vm.paymentSubmit = function() {
+        vm.walk.paymentSubmitted = true;
+        AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function(data) {
+          console.log('yes!', data);
+        });
+      $('#pays').attr('disabled', 'disabled');
+    };
   }
 })();
