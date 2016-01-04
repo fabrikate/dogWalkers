@@ -3,9 +3,9 @@
   .module('app.scheduleWalk')
   .controller('ScheduleWalkController', ScheduleWalkController);
 
-  ScheduleWalkController.$inject = ['$routeParams', 'UserFactory', 'DogFactory', 'AppointmentFactory'];
+  ScheduleWalkController.$inject = ['$routeParams', 'UserFactory', 'DogFactory', 'AppointmentFactory', '$http'];
 
-  function ScheduleWalkController($routeParams, UserFactory, DogFactory, AppointmentFactory) {
+  function ScheduleWalkController($routeParams, UserFactory, DogFactory, AppointmentFactory, $http) {
     var vm = this;
     // hide the main page
     $('#landingPage').hide();
