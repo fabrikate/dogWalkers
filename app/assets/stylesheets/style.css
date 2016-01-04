@@ -95,3 +95,7 @@ option {
   border: solid 2px white;
   border-radius: 5px;
 }
+.text-default {
+  color: #929191;
+  font-style: italic;
+}

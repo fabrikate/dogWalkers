@@ -22,20 +22,26 @@
     vm.walker = UserFactory.get({id: walkerID});
     //function to show where the progress is in the walk appointment
     function progressBar(apt) {
-      var headers = ['#step1', '#step2', '#step3', '#step4', '#step5'];
-      if ( apt.dogReturnedConfirm ) {
-        headers.forEach(function(step) {
-          $(step).attr('class', 'text-default');
-        });
+      // first will always be active to get to the site
+      $('#step1').attr('class', 'text-default');
+      var headers = ['#step2', '#step3', '#step4', '#step5'];
+      if ( apt.paymentSubmitted ) {
+        $('#pays').attr('disabled', 'disabled');
         $('#walkerCfm').attr('disabled', 'disabled');
         $('#dogReturn').attr('disabled', 'disabled');
-      } else if ( apt.walkerConfirm ) {
-        for ( var i = 0; i < 2; i++ ) {
-          $(headers[i]).attr('class', 'text-default');
-        }
+        headers.forEach(function (step) {
+          $(step).attr('class', 'text-default')
+        })
+      } else if ( apt.dogReturnedConfirm ) {
         $('#walkerCfm').attr('disabled', 'disabled');
-      } else if ( apt.ownerRequested ) {
-        $('#step1').attr('class', 'text-default');
+        $('#dogReturn').attr('disabled', 'disabled');
+        headers.forEach(function(step) {
+          console.log('step: ', step);
+          $(step).attr('class', 'text-default');
+        });
+      } else if ( apt.walkerConfirm ) {
+        $(headers[0]).attr('class', 'text-default');
+        $('#walkerCfm').attr('disabled', 'disabled');
       } else {
         console.log('error!');
       }
@@ -45,13 +51,16 @@
       AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function() {
         console.log('yes');
       })
-        $('#walkerCfm').attr('disabled', 'disabled');
+      $('#step2').attr('class', 'text-default');
+      $('#walkerCfm').attr('disabled', 'disabled');
     };
     vm.dogReturned = function() {
         vm.walk.dogReturnedConfirm = true;
         AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function() {
           console.log('yes');
         })
+      $('#step3').attr('class', 'text-default');
+      $('#step4').attr('class', 'text-default');
       $('#dogReturn').attr('disabled', 'disabled');
     };
     vm.paymentSubmit = function() {
@@ -59,6 +68,7 @@
         AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function(data) {
           console.log('yes!', data);
         });
+        $('#step5').attr('class', 'text-default');
       $('#pays').attr('disabled', 'disabled');
     };
   }
