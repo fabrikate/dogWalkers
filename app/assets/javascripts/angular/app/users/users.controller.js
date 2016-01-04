@@ -15,29 +15,31 @@
     var Users = UserFactory.query(function (data) {
       vm.allWalkers = [];
       data.forEach(function(item){
-        vm.dogWalkers = {
-          id: item.id,
-          name: item.name,
-          profileURL: item.profileURL,
-          streetAddress: item.streetAddress,
-          zipCode: item.zipCode,
-          email: item.email,
-          rating: '',
-          dog_walker: item.dog_walker,
-          dogWalkerRating: item.dogWalkerRating
-        }
-        // push all users to a dog walker array that will be displayed if they are a dog walker
-        vm.allWalkers.push(angular.copy(vm.dogWalkers));
-        vm.dogWalkers = {
-          id: '',
-          name: '',
-          profileURL: '',
-          streetAddress: '',
-          zipCode: '',
-          email: '',
-          rating: '',
-          dog_walker: '',
-          dogWalkerRating: 0
+        if (item.dogWalkerRating && !item.doNotDisturb) {
+          vm.dogWalkers = {
+            id: item.id,
+            name: item.name,
+            profileURL: item.profileURL,
+            streetAddress: item.streetAddress,
+            zipCode: item.zipCode,
+            email: item.email,
+            rating: '',
+            dog_walker: item.dog_walker,
+            dogWalkerRating: item.dogWalkerRating
+          }
+          // push all users to a dog walker array that will be displayed if they are a dog walker
+          vm.allWalkers.push(angular.copy(vm.dogWalkers));
+          vm.dogWalkers = {
+            id: '',
+            name: '',
+            profileURL: '',
+            streetAddress: '',
+            zipCode: '',
+            email: '',
+            rating: '',
+            dog_walker: '',
+            dogWalkerRating: 0
+          }
         }
         // display user information only when the $routeParams and user id match
         if (parseInt($routeParams.user_id) === item.id) {

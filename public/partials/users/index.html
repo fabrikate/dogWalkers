@@ -12,8 +12,8 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div ng-repeat="user in vm.allWalkers | filter:query | orderBy: sorted" class="col-lg-4 col-xs-4">
-        <div ng-if="user.dog_walker">
+      <div ng-repeat="user in vm.allWalkers | filter:query | orderBy: sorted track by user.id " class="col-lg-4 col-xs-4">
+        <div ng-hide="user.doNotDisturb">
             <h3 class="headers">{{user.name}}</h3>
             <img ng-if="user.profileURL" ng-src="{{user.profileURL}}" alt="profile pic" class="img-reactive col-lg-4 col-xs-4 dwPics"/>
           <p class="headers">Neighborhood: {{user.zipCode | zip2neighborhood }}</p>
