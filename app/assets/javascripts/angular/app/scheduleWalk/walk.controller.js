@@ -17,7 +17,6 @@
       vm.dogID = vm.walk.dog_id;
       vm.dog = DogFactory.get({id: vm.dogID});
       progressBar(vm.walk);
-      console.log(vm.walk.walkerConfirm);
     });
     vm.owner = UserFactory.get({id: userID});
     vm.walker = UserFactory.get({id: walkerID});
@@ -47,7 +46,6 @@
         $('#walkerCfm').attr('disabled', 'disabled');
         $('#dogReturn').attr('disabled', 'disabled');
         headers.forEach(function(step) {
-          console.log('step: ', step);
           $(step).attr('class', 'text-default');
         });
       } else if ( apt.walkerConfirm ) {
@@ -57,6 +55,7 @@
         console.log('error!');
       }
     }
+
     // if the walker confirms the appointment, send the text to owner
     vm.walkerConfirm = function() {
       vm.walk.walkerConfirm = true;
@@ -68,6 +67,7 @@
       $('#walkerCfm').attr('disabled', 'disabled');
       $('#walkerDny').attr('disabled', 'disabled');
     };
+
     // if the walker denys the walk, send the text to the owner
     vm.walkerDeny = function () {
       vm.walk.walkerConfirm = false;
@@ -82,8 +82,12 @@
       $('#dogReturn').attr('disabled', 'disabled');
       $('#pays').attr('disabled', 'disabled');
     };
+
     // when the dog is returned
     vm.dogReturned = function() {
+      if (vm.walk.walkerConfirm == false) {
+        $('#dogReturned').attr('class', 'btn-danger').text('Walk not confirmed');
+      }
         vm.walk.dogReturnedConfirm = true;
         AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function() {
           console.log('yes');
@@ -92,8 +96,12 @@
       $('#step4').attr('class', 'text-default');
       $('#dogReturn').attr('disabled', 'disabled');
     };
+
     // payment
     vm.paymentSubmit = function() {
+      if (!vm.walk.dogReturnedConfirm == false) {
+        $('#pays').attr('class', 'btn-danger').text('Dog not returned');
+      }
         vm.walk.paymentSubmitted = true;
         AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function(data) {
           console.log('yes!', data);
@@ -101,6 +109,7 @@
         $('#step5').attr('class', 'text-default');
       $('#pays').attr('disabled', 'disabled');
     };
+
     // functions to send text messages
     vm.sendConfirmWalk = function (id) {
       var params = 'id=' + id;

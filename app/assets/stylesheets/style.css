@@ -100,7 +100,7 @@ option {
   font-style: italic;
 }
 .text-canceled {
-  color: #715452;
+  color: #9D2F22;
   font-style: italic;
-  text-decoration: overline;
+  text-decoration: line-through;
 }
