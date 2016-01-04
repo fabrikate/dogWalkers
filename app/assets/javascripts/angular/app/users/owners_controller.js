@@ -50,16 +50,5 @@
         }
       })
     })
-    // function that send a post request that trigger twilio text messages
-    vm.sendConfirmWalk = function () {
-      $http.post('/notifications/confirm', 'foo=bar').then(function(res) {
-        console.log('success, ', res);
-      })
-    }
-    vm.sendDenyWalk = function () {
-      $http.post('notifications/deny', 'foo=bar').then(function(res) {
-        console.log('success, ', res);
-      })
-    }
   }
 })();
