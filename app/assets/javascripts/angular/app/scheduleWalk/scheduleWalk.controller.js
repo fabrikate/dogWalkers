@@ -57,16 +57,13 @@
       AppointmentFactory.save({id: vm.newWalk.id}, vm.newWalk).$promise.then(function(data) {
         console.log('data is: ', data);
         vm.currentWalk = data.id;
+        vm.sendRequestWalk(vm.currentWalk);
       })
     }
     // function that send a post request that trigger twilio text messages
-    vm.sendConfirmWalk = function () {
-      $http.post('/notifications/confirm', 'foo=bar').then(function(res) {
-        console.log('success, ', res);
-      })
-    }
-    vm.sendDenyWalk = function () {
-      $http.post('notifications/deny', 'foo=bar').then(function(res) {
+    vm.sendRequestWalk = function (id) {
+      var params = 'id=' + id;
+      $http.post('/notifications/notify', params).then(function(res) {
         console.log('success, ', res);
       })
     }

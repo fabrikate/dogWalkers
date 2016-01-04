@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/twilio/voice', to: 'twilio#voice'
   post '/notifications/notify', to: 'notifications#notify'
   post '/notifications/confirm', to: 'notifications#confirm'
+  post '/notifications/deny',  to: 'notifications#deny'
 
   scope '/api' do
     resources :users

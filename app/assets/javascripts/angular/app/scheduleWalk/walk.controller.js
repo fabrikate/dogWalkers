@@ -25,6 +25,7 @@
       // first will always be active to get to the site
       $('#step1').attr('class', 'text-default');
       var headers = ['#step2', '#step3', '#step4', '#step5'];
+      // if the payment is processed, all other steps are done
       if ( apt.paymentSubmitted ) {
         $('#pays').attr('disabled', 'disabled');
         $('#walkerCfm').attr('disabled', 'disabled');
@@ -51,9 +52,24 @@
       AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function() {
         console.log('yes');
       })
+      vm.sendConfirmWalk(walkID);
       $('#step2').attr('class', 'text-default');
       $('#walkerCfm').attr('disabled', 'disabled');
+      $('#walkerDny').attr('disabled', 'disabled')
     };
+    vm.walkerDeny = function () {
+      vm.walk.walkerConfirm = false;
+      AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function() {
+        console.log('yes');
+      })
+      vm.sendDenyWalk(walkID);
+      headers.forEach(function(step) {
+        $(step).attr('class', 'text-canceled')
+      })
+      $('#walkerCfm').attr('disabled', 'disabled');
+      $('#dogReturn').attr('disabled', 'disabled');
+      $('#pays').attr('disabled', 'disabled');
+    }
     vm.dogReturned = function() {
         vm.walk.dogReturnedConfirm = true;
         AppointmentFactory.update({id: walkID}, vm.walk).$promise.then(function() {
@@ -71,5 +87,17 @@
         $('#step5').attr('class', 'text-default');
       $('#pays').attr('disabled', 'disabled');
     };
+    vm.sendConfirmWalk = function (id) {
+      var params = 'id=' + id;
+      $http.post('notifications/notify', params).then(function(res) {
+        console.log('success, ', res);
+      })
+    };
+    vm.sendDenyWalk = function (id) {
+      var params = 'id=' + id;
+      $http.post('notifications/deny', params).then(function(res) {
+        console.log('success, ', res);
+      })
+    }
   }
 })();
