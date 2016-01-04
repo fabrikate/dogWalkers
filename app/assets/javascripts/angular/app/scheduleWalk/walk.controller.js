@@ -27,10 +27,13 @@
         headers.forEach(function(step) {
           $(step).attr('class', 'text-default');
         });
+        $('#walkerCfm').attr('disabled', 'disabled');
+        $('#dogReturn').attr('disabled', 'disabled');
       } else if ( apt.walkerConfirm ) {
         for ( var i = 0; i < 2; i++ ) {
           $(headers[i]).attr('class', 'text-default');
         }
+        $('#walkerCfm').attr('disabled', 'disabled');
       } else if ( apt.ownerRequested ) {
         $('#step1').attr('class', 'text-default');
       } else {

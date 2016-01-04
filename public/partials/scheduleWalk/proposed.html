@@ -1,14 +1,15 @@
 <img src="assets/runningDog.jpg" alt="running dog" id="runningDog" />
 <div class="container-fluid" ng-controller="WalkController">
   <aside class="col-lg-2 col-xs-2">
+    <h3 class="text-success">Walk Progress</h3>
     <h4 id="step1" class="headers">Owner requests walk</h4>
     <h4 id="step2" class="headers">Walker accepts request</h4>
-    <button type="button" class="detailsBtn btn btn-success" ng-click="vm.ownerConfirm()">Walker Confirm</button>
+    <button id="walkerCfm" type="button" class="detailsBtn btn btn-success" ng-click="vm.walkerConfirm()">Walker Confirm</button>
     <h4 id="step3" class="headers">Walker walks dog</h4>
     <h4 id="step4" class="headers">Walker confirms return of dog</h4>
-    <button type="button" class="detailsBtn btn btn-success" ng-click="vm.dogReturned()">Dog Returned</button>
+    <button id="dogReturn" type="button" class="detailsBtn btn btn-success" ng-click="vm.dogReturned()">Dog Returned</button>
     <h4 id="step5" class="headers">Payment for walker goes through</h4>
-    <a href="charges/new" target="blank" class="btn btn-success">Owner Pays</a>
+    <a href="charges/new" id="pays" target="blank" class="btn btn-success">Owner Pays</a>
   </aside>
 <!-- Appintment Details -->
   <div class="col-lg-6 col-xs-6">
