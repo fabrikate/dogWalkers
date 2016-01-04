@@ -46,7 +46,7 @@ class NotificationsController < ApplicationController
       from: '2532377808',
       #TODO when live replace with @owner.phoneNum
       to: '4257852227',
-      body: "The walk has been canceled. Please select another dog walker"
+      body: "The walk has been canceled. Please select another dog walker."
       })
 
     render plain: message.status
