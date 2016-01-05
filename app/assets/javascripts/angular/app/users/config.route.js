@@ -27,5 +27,10 @@
       controller: 'WalkerController',
       controllerAs: 'vm'
     })
+    .when('/comingsoon', {
+      templateUrl: '/partials/users/comingsoon.html',
+      controller: 'ComingsoonController',
+      controllerAs: 'vm'
+    })
   }
 })();
