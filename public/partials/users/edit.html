@@ -47,7 +47,6 @@
     <input class="col-lg-2 col-xs-2" type="url" name="user[addtionalPics]" placeholder="recommended" id="morePics" ng-model="vm.addPic"/>
   </div>
   <label class="col-lg-1 col-xs-1"></label>
-  <p class="text-info">{{vm.addPic}}</p>
   <div id="owner" ng-if="vm.userType === 'owner'" class="col-xs-offset-2 col-lg-4 col-xs-4 animated fadeInDown">
     <legend class="headers">{{vm.userType}}</legend>
     <!-- <div class="row col-lg-12 col-xs-12">
@@ -93,7 +92,7 @@
     <label for="no" class="headers">Off</label>
     <input type="radio" name="dnd" value="false" id="no" ng-model="vm.doNotDisturb"/>
     <p class="text-danger">By clicking below I agree that I will not harm any animals or people I meet through this website.</p>
-      <a ng-href="" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
+      <a ng-href="/users/{{vm.user.id}}" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
     </div>
   </div>
 </form>
