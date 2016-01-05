@@ -62,15 +62,9 @@
     }
     // function that send a post request that trigger twilio text messages
     vm.sendRequestWalk = function (id) {
-      var params = 'id=' + id;
-      console.log('params are: ', params);
-      // vm.req = new TwilioFactory;
       TwilioFactory.save({type: 'notify', id: id}).$promise.then(function(resp) {
         console.log('yes ', resp);
       })
-      // $http.post('/notifications/notify', params).then(function(res) {
-      //   console.log('success, ', res);
-      // })
     }
   }
 })();

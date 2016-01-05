@@ -47,7 +47,7 @@
     <input class="col-lg-2 col-xs-2" type="url" name="user[addtionalPics]" placeholder="recommended" id="morePics" ng-model="vm.addPic"/>
   </div>
   <label class="col-lg-1 col-xs-1"></label>
-  <div id="owner" ng-if="vm.userType === 'owner'" class="col-xs-offset-2 col-lg-4 col-xs-4 animated fadeInDown">
+  <div id="owner" ng-if="vm.userType === 'owner'" class="col-xs-offset-1 col-lg-4 col-xs-4 animated fadeInDown">
     <legend class="headers">{{vm.userType}}</legend>
     <div class="row col-lg-12 col-xs-12">
       <label class="headers control-label col-lg-5 col-xs-5" for="dogName">Dog's Name</label>
@@ -75,10 +75,10 @@
       <label class="headers control-label" for="Confidence">Confidence</label>
       <input type="text" name="dogConfidence" id="Confidence" ng-model="vm.dogInfo.confidence"/>
     </div>
-    <a ng-href="" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
+    <a ng-href="/users/{{vm.user.id}}" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
   </div>
 
-  <div class="row col-xs-offset-2 col-lg-3 col-xs-3 animated fadeInDown" id="walker" ng-if="vm.userType === 'walker'">
+  <div class="row col-xs-offset-1 col-lg-3 col-xs-3 animated fadeInDown" id="walker" ng-if="vm.userType === 'walker'">
     <legend class="headers">{{ vm.userType }}</legend>
     <label class="headers control-label" for="dnd">Do not Disturb?</label>
     <p class="headers"><i>This means you will not be searchable for dog walk appointments</i></p>

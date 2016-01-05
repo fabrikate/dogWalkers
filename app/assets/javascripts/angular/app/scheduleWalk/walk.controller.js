@@ -3,9 +3,9 @@
   .module('app.scheduleWalk')
   .controller('WalkController', WalkController);
 
-  WalkController.$inject = ['$routeParams', 'AppointmentFactory', 'UserFactory', 'DogFactory', 'AddPicFactory', '$http'];
+  WalkController.$inject = ['$routeParams', 'AppointmentFactory', 'UserFactory', 'DogFactory', 'AddPicFactory', 'TwilioFactory'];
 
-  function WalkController ($routeParams, AppointmentFactory, UserFactory, DogFactory, AddPicFactory, $http) {
+  function WalkController ($routeParams, AppointmentFactory, UserFactory, DogFactory, AddPicFactory, TwilioFactory) {
     var vm = this;
     $('#landingPage').hide();
     var userID = $routeParams.user_id;
@@ -31,7 +31,7 @@
         headers.forEach(function (step) {
           $(step).attr('class', 'text-canceled');
         });
-      $('#step6').attr('class', 'text-canceled');  
+      $('#step6').attr('class', 'text-canceled');
       $('#pays').attr('disabled', 'disabled');
       $('#walkerCfm').attr('disabled', 'disabled');
       $('#dogReturn').attr('disabled', 'disabled');
@@ -117,16 +117,14 @@
 
     // functions to send text messages
     vm.sendConfirmWalk = function (id) {
-      var params = 'id=' + id;
-      $http.post('notifications/notify', params).then(function(res) {
-        console.log('success, ', res);
-      });
+      TwilioFactory.save({type: 'confirm', id: id}).$promise.then(function(resp) {
+        console.log('yes ', resp);
+      })
     };
     vm.sendDenyWalk = function (id) {
-      var params = 'id=' + id;
-      $http.post('notifications/deny', params).then(function(res) {
-        console.log('success, ', res);
-      });
+      TwilioFactory.save({type: 'deny', id: id}).$promise.then(function(resp) {
+        console.log('yes ', resp);
+      })
     };
   }
 })();
