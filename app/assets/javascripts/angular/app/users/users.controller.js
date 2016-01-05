@@ -29,6 +29,7 @@
           }
           // push all users to a dog walker array that will be displayed if they are a dog walker
           vm.allWalkers.push(angular.copy(vm.dogWalkers));
+          console.log(vm.allWalkers);
           vm.dogWalkers = {
             id: '',
             name: '',
@@ -79,7 +80,7 @@
         });
       } else {
         vm.newDog = new DogFactory();
-        vm.newDog.user_id = vm.dogInfo.user_id;
+        vm.newDog.user_id = $routeParams.user_id;
         vm.newDog = vm.dogInfo;
         DogFactory.save(vm.newDog, function() {
           console.log('yes, new dog?', vm.newDog.id);
