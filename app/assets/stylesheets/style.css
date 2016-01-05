@@ -61,9 +61,13 @@ option {
   margin-left: 15px;
 }
 .dwPics:hover {
-  -webkit-transform: scale(1.7);
-  -ms-transform: scale(1.7);
-  transform: scale(1.7);
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+}
+.dwPics {
+  height: 30%;
+  width: 30%;
 }
 #logo {
   width: 40%;
