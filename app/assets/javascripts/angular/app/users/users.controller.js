@@ -15,7 +15,7 @@
     var Users = UserFactory.query(function (data) {
       vm.allWalkers = [];
       data.forEach(function(item){
-        if (item.dogWalkerRating && !item.doNotDisturb) {
+        if (item.dog_walker && !item.doNotDisturb) {
           vm.dogWalkers = {
             id: item.id,
             name: item.name,
@@ -29,7 +29,6 @@
           }
           // push all users to a dog walker array that will be displayed if they are a dog walker
           vm.allWalkers.push(angular.copy(vm.dogWalkers));
-          console.log(vm.allWalkers);
           vm.dogWalkers = {
             id: '',
             name: '',
