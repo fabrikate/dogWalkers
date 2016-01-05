@@ -49,11 +49,6 @@
   <label class="col-lg-1 col-xs-1"></label>
   <div id="owner" ng-if="vm.userType === 'owner'" class="col-xs-offset-2 col-lg-4 col-xs-4 animated fadeInDown">
     <legend class="headers">{{vm.userType}}</legend>
-    <!-- <div class="row col-lg-12 col-xs-12">
-      <label for="newDog" class="headers control-label">Add a new dog?</label>
-      <input type="radio" id="newDog" name="newDog" ng-model="vm.newDog" value="newDog"/>
-      <p class="text-info">{{vm.newDog}}</p>
-    </div> -->
     <div class="row col-lg-12 col-xs-12">
       <label class="headers control-label col-lg-5 col-xs-5" for="dogName">Dog's Name</label>
       <input type="text" name="dogName" id="dogName" placeholder="Lili" ng-model="vm.dogInfo.name"/>

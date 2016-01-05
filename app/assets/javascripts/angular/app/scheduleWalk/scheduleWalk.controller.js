@@ -3,9 +3,9 @@
   .module('app.scheduleWalk')
   .controller('ScheduleWalkController', ScheduleWalkController);
 
-  ScheduleWalkController.$inject = ['$routeParams', 'UserFactory', 'DogFactory', 'AppointmentFactory', '$http'];
+  ScheduleWalkController.$inject = ['$routeParams', 'UserFactory', 'DogFactory', 'AppointmentFactory', 'TwilioFactory'];
 
-  function ScheduleWalkController($routeParams, UserFactory, DogFactory, AppointmentFactory, $http) {
+  function ScheduleWalkController($routeParams, UserFactory, DogFactory, AppointmentFactory, TwilioFactory) {
     var vm = this;
     // hide the main page
     $('#landingPage').hide();
@@ -63,9 +63,14 @@
     // function that send a post request that trigger twilio text messages
     vm.sendRequestWalk = function (id) {
       var params = 'id=' + id;
-      $http.post('/notifications/notify', params).then(function(res) {
-        console.log('success, ', res);
+      console.log('params are: ', params);
+      vm.req = new TwilioFactory;
+      TwilioFactory.save({type: 'notify'}, params).$promise.then(function(resp) {
+        console.log('yes ', resp);
       })
+      // $http.post('/notifications/notify', params).then(function(res) {
+      //   console.log('success, ', res);
+      // })
     }
   }
 })();

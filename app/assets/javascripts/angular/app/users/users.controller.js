@@ -74,8 +74,17 @@
         console.log('user is: ', vm.user);
           console.log('yes! ', data);
         });
-      DogFactory.update({id: vm.dogInfo.id}, vm.dogInfo).$promise.then(function(data) {
-      });
+      if (vm.dogInfo.id) {
+        DogFactory.update({id: vm.dogInfo.id}, vm.dogInfo).$promise.then(function(data) {
+        });
+      } else {
+        vm.newDog = new DogFactory();
+        vm.newDog.user_id = vm.dogInfo.user_id;
+        vm.newDog = vm.dogInfo;
+        DogFactory.save(vm.newDog, function() {
+          console.log('yes, new dog?', vm.newDog.id);
+        })
+      }
       if (vm.addPic) {
         vm.newPic = new AddPicFactory();
         vm.newPic.user_id = vm.user.id;
@@ -84,12 +93,6 @@
           console.log('yes? ', vm.newPic);
         })
       }
-    }
-    // send post request asking for appointment
-    vm.sendWalkRequest = function () {
-      $http.post('/notifications/notify', 'foo=bar').then(function(res) {
-        console.log('success, ', res);
-      })
     }
   }
 
