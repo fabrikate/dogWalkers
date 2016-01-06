@@ -77,11 +77,11 @@
         DogFactory.update({id: vm.dogInfo.id}, vm.dogInfo).$promise.then(function(data) {
         });
       } else {
-        console.log('routep: ', $routeParams)
+        console.log('doginfo: ', vm.dogInfo)
         vm.newDog = new DogFactory();
         vm.newDog = vm.dogInfo;
         vm.newDog.user_id = vm.user.id;
-        vm.newDog.$save();
+        vm.newDog.save();
       }
       if (vm.addPic) {
         vm.newPic = new AddPicFactory();
