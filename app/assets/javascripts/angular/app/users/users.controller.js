@@ -79,9 +79,10 @@
         });
       } else {
         vm.newDog = new DogFactory();
-        vm.newDog.user_id = $routeParams.user_id;
         vm.newDog = vm.dogInfo;
+        vm.newDog.user_id = $routeParams.user_id;
         DogFactory.save(vm.newDog, function() {
+          console.log('vm.newDog', vm.newDog);
           console.log('yes, new dog?', vm.newDog.id);
         })
       }

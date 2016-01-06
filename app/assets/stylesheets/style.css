@@ -66,8 +66,8 @@ option {
   transform: scale(1.5);
 }
 .dwPics {
-  height: 150px;
-  width: 180px;
+  height: 30%;
+  width: 30%;
 }
 #logo {
   width: 40%;
