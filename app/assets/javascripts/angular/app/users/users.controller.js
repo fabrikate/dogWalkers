@@ -71,7 +71,6 @@
       vm.userType === 'owner' ? vm.user.dog_owner = true : vm.user.dog_walker = true;
       vm.doNotDisturb === 'true' ? vm.user.doNotDisturb = true : vm.user.doNotDisturb = false;
       UserFactory.update({id: vm.user.id }, vm.user).$promise.then(function(data) {
-        console.log('user is: ', vm.user);
           console.log('yes! ', data);
         });
       if (vm.dogInfo.id) {
@@ -81,12 +80,8 @@
         console.log('routep: ', $routeParams)
         vm.newDog = new DogFactory();
         vm.newDog = vm.dogInfo;
-        vm.newDog.user_id = $routeParams.user_id;
-        console.log('pre: ', vm.newDog)
-        DogFactory.save(vm.newDog, function() {
-          console.log('vm.newDog:', vm.newDog);
-          console.log('yes, new dog?', vm.newDog.id);
-        })
+        vm.newDog.user_id = vm.user.id;
+        vm.newDog.$save();
       }
       if (vm.addPic) {
         vm.newPic = new AddPicFactory();
