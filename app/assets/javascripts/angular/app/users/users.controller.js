@@ -77,11 +77,11 @@
         DogFactory.update({id: vm.dogInfo.id}, vm.dogInfo).$promise.then(function(data) {
         });
       } else {
-        console.log('doginfo: ', vm.dogInfo)
         vm.newDog = new DogFactory();
         vm.newDog = vm.dogInfo;
-        DogFactory.save(vm.newDog, function () {
-          console.log('new dog is: ', vm.newDog);
+        vm.newDog = vm.user.id;
+        console.log('vm.newDog.id: ', vm.newDog.id);
+        DogFactory.save(vm.newDog).$promise.then(function () {
           console.log('new dog id: ', vm.newDog.user_id);
         })
       }
