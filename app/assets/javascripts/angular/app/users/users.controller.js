@@ -79,10 +79,10 @@
       } else {
         vm.newDog = new DogFactory();
         vm.newDog = vm.dogInfo;
-        vm.newDog = vm.current_user.toString();
-        DogFactory.save(vm.newDog, function () {
-          console.log('new dog id: ', vm.newDog.user_id);
-        })
+        vm.newDog.user_id = $routeParams.user_id;
+        DogFactory.save(vm.newDog, function() {
+           console.log('yes, new dog?', vm.newDog.id);
+         })
       }
       if (vm.addPic) {
         vm.newPic = new AddPicFactory();

@@ -61,9 +61,9 @@ option {
   margin-left: 15px;
 }
 .dwPics:hover {
-  -webkit-transform: scale(1.5);
-  -ms-transform: scale(1.5);
-  transform: scale(1.5);
+  -webkit-transform: translateX(60px) scale(3.0);
+  -ms-transform: translateX(60px) scale(3.0);
+  transform: translateX(60px) scale(3.0);
 }
 .dwPics {
   height: 30%;
