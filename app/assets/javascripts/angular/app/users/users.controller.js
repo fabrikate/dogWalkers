@@ -79,8 +79,7 @@
       } else {
         vm.newDog = new DogFactory();
         vm.newDog = vm.dogInfo;
-        vm.newDog = vm.current_user;
-        console.log('vm.newDog.id: ', vm.current_user);
+        vm.newDog = vm.current_user.toString();
         DogFactory.save(vm.newDog, function () {
           console.log('new dog id: ', vm.newDog.user_id);
         })
