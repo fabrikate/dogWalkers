@@ -80,8 +80,10 @@
         console.log('doginfo: ', vm.dogInfo)
         vm.newDog = new DogFactory();
         vm.newDog = vm.dogInfo;
-        vm.newDog.user_id = vm.user.id;
-        vm.newDog.save();
+        DogFactory.save(vm.newDog, function () {
+          console.log('new dog is: ', vm.newDog);
+          console.log('new dog id: ', vm.newDog.user_id);
+        })
       }
       if (vm.addPic) {
         vm.newPic = new AddPicFactory();
