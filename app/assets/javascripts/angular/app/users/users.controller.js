@@ -60,7 +60,7 @@
             aggression: dog.aggression,
             confidence: dog.confidence,
             pictureURL: dog.pictureURL,
-            user_id: dog.$routeParams.user_id
+            user_id: dog.user_id
           }
         }
       })
@@ -82,8 +82,8 @@
         vm.newDog = new DogFactory();
         vm.newDog = vm.dogInfo;
         vm.newDog.user_id = $routeParams.user_id;
+        console.log('pre: ', vm.newDog)
         DogFactory.save(vm.newDog, function() {
-          vm.newDog.user_id = $routeParams.user_id;
           console.log('vm.newDog:', vm.newDog);
           console.log('yes, new dog?', vm.newDog.id);
         })
