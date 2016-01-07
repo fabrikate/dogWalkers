@@ -49,6 +49,7 @@
           vm.additionalPics.push(pic);
         }
       })
+      console.log(vm.additionalPics);
     })
     vm.ownerConfirm = function() {
       $('#ownerCfm').attr('disabled', 'disabled');
