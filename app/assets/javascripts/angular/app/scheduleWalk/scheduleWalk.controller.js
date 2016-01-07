@@ -3,12 +3,13 @@
   .module('app.scheduleWalk')
   .controller('ScheduleWalkController', ScheduleWalkController);
 
-  ScheduleWalkController.$inject = ['$routeParams', 'UserFactory', 'DogFactory', 'AppointmentFactory', 'TwilioFactory'];
+  ScheduleWalkController.$inject = ['$routeParams', 'UserFactory', 'DogFactory', 'AppointmentFactory', 'TwilioFactory', 'AddPicFactory'];
 
-  function ScheduleWalkController($routeParams, UserFactory, DogFactory, AppointmentFactory, TwilioFactory) {
+  function ScheduleWalkController($routeParams, UserFactory, DogFactory, AppointmentFactory, TwilioFactory, AddPicFactory) {
     var vm = this;
     // hide the main page
     $('#landingPage').hide();
+    vm.additionalPics = [];
 
     // object that resembles appointment DB
     vm.walk = {
@@ -38,6 +39,14 @@
         if(dog.user_id === $routeParams.user_id) {
           vm.dog = dog;
           vm.walk.dog_id = dog.id;
+        }
+      })
+    })
+    //get additional pictures
+    AddPicFactory.query(function( pics ) {
+      pics.forEach(function(pic) {
+        if (pic.user_id === $routeParams.user_id) {
+          vm.additionalPics.push(pic);
         }
       })
     })

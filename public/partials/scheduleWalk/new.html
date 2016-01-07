@@ -6,9 +6,9 @@
       <h3 class="text-primary">Phone : {{vm.user.phoneNum | telephone }}</h3>
       <h3 class="text-primary">Address: {{vm.user.streetAddress}} Seattle, WA {{vm.user.zipCode}}</h3>
       <h3 class="text-primary">Email: {{vm.user.email}}</h3>
-      <img ng-src="{{vm.user.profileURL}}" ng-hide="vm.user.additionalPics.length > 0" class="col-lg-5 col-xs-5"/>
+      <img ng-src="{{vm.user.profileURL}}" ng-hide="vm.additionalPics.length > 0" class="col-lg-5 col-xs-5"/>
       <uib-carousel class="col-lg-5 col-xs-5">
-        <uib-slide ng-repeat="pic in vm.user.additionalPics" active="slide.active1">
+        <uib-slide ng-repeat="pic in vm.additionalPics" active="slide.active1">
           <img ng-src={{pic}} alt="owner picture" />
         </uib-slide>
       </uib-carousel>
