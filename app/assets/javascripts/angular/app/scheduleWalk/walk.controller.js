@@ -21,6 +21,15 @@
     vm.owner = UserFactory.get({id: userID});
     vm.walker = UserFactory.get({id: walkerID});
 
+    AddPicFactory.query(function( pics ) {
+      pics.forEach(function(pic) {
+        if (pic.user_id == $routeParams.user_id) {
+          vm.additionalPics.push(pic);
+        }
+      })
+      console.log(vm.additionalPics);
+    })
+
     //function to show where the progress is in the walk appointment
     function progressBar(apt) {
       // first will always be active to get to the site

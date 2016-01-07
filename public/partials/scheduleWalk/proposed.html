@@ -27,7 +27,12 @@
     <legend class="headers">
       <h3>{{vm.owner.name}} - Dog Owner </h3>
     </legend>
-    <img ng-src="{{vm.owner.profileURL}}" alt="owner picture" class="miniPics img-circle pull-right"/>
+    <img ng-src="{{vm.owner.profileURL}}" alt="owner picture" class="miniPics img-circle pull-right" ng-hide="vm.additionalPics.length >= 1"/>
+    <uib-carousel class="miniPics img-circle pull-right">
+      <uib-slide ng-repeat="pic in vm.additionalPics" active="slide.active1">
+        <img ng-src={{pic.additionalURL}} alt="owner picture" />
+      </uib-slide>
+    </uib-carousel>
     <h4>Address: {{vm.owner.streetAddress}} Seattle, WA {{vm.owner.zipCode}}</h4>
     <h4>Phone: {{vm.owner.phoneNum | telephone}}</h4>
     <h4>Email: {{vm.owner.email}}</h4>
