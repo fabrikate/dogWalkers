@@ -45,7 +45,7 @@
     //get additional pictures
     AddPicFactory.query(function( pics ) {
       pics.forEach(function(pic) {
-        if (pic.user_id === $routeParams.user_id) {
+        if (pic.user_id == $routeParams.user_id) {
           vm.additionalPics.push(pic);
         }
       })
