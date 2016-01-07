@@ -11,6 +11,7 @@
     var userID = $routeParams.user_id;
     var walkerID = $routeParams.walker_id;
     var walkID = $routeParams.walk_id;
+    vm.additionalPics = [];
 
     //variables to store walk information
     vm.walk = AppointmentFactory.get({id: walkID}, function () {
