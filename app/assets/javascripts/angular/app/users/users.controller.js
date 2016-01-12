@@ -79,6 +79,7 @@
       } else {
         vm.newDog = new DogFactory();
         vm.newDog = vm.dogInfo;
+        console.log($routeParams.user_id);
         vm.newDog.user_id = $routeParams.user_id;
         DogFactory.save(vm.newDog, function() {
            console.log('yes, new dog?', vm.newDog.id);

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'home#show'
+  root to: '/auth/facebook'
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: redirect('/')

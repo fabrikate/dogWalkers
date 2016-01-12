@@ -50,6 +50,7 @@ class DogsController < ApplicationController
     :name,
     :age,
     :weight,
+    :user_id,
     :aggression,
     :confidence,
     :training,
