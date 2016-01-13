@@ -6,12 +6,12 @@
       </div>
       <div class="modal-body">
         <h3>Pay $12 for a 30min walk</h3>
+        <p>For testing use: 4242 4242 4242 4242 exp 01/19 123</p>
         <%= form_tag charges_path do %>
         <article class="col-lg-offset-2">
           <% if flash[:error].present? %>
           <div id="error_explanation">
             <p><%= flash[:error] %></p>
-            <p>For testing use: 4242 4242 4242 4242 exp 01/19 123</p>
           </div>
           <% end %>
           </article>
