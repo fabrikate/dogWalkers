@@ -12,7 +12,7 @@ class NotificationsController < ApplicationController
     message = client.messages.create({
        from: '2532377808',
        #TODO: when live replace with @walker.phoneNum
-       to: '4257852227',
+       to:  @walker.phoneNum || '4257852227',
        body: "You have a request for a walk! Visit eDoggy.herokuapp.com/#/scheduleWalk/#{@appointment.owner_id}/#{@appointment.walker_id}/#{@appointment.id}"
       })
     render plain: message.status
@@ -28,7 +28,7 @@ class NotificationsController < ApplicationController
     message = client.messages.create({
       from: '2532377808',
       #TODO when live replace with @owner.phoneNum
-      to: '4257852227',
+      to: @owner.phoneNum || '4257852227',
       body: "The walk has been confirmed! Visit eDoggy.herokuapp.com/#/scheduleWalk/#{@appointment.owner_id}/#{@appointment.walker_id}/#{@appointment.id}"
       })
 
