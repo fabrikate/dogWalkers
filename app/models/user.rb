@@ -11,4 +11,7 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
+  validates :phoneNum, presence: true
+  validates :zipCode, presence: true
 end

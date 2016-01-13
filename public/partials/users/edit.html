@@ -28,11 +28,11 @@
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
     <label class="headers control-label col-lg-1 col-xs-1" for="address">Address</label>
-    <input class="col-lg-2 col-xs-2" type="text" name="user[streetAddress]" placeholder="123 Easy St" ng-model="vm.user.streetAddress"/>
+    <input class="col-lg-2 col-xs-2" type="text" name="user[streetAddress]" placeholder="123 Easy St" ng-model="vm.user.streetAddress" required/>
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
     <label class="col-lg-1 col-xs-1"></label>
-    <input class="col-lg-2 col-xs-2" type="text" name="user[zipCode]" placeholder="98101" ng-model="vm.user.zipCode"/>
+    <input class="col-lg-2 col-xs-2" type="text" name="user[zipCode]" placeholder="98101" ng-model="vm.user.zipCode" required/>
   </div>
   <div class="row col-lg-offset-2 col-xs-offset-2">
     <label class="headers control-label col-lg-1 col-xs-1" for="address">Phone</label>
@@ -70,9 +70,9 @@
         On a Scale of 1 to 5. 1 meaning your dog does not have the behavior to 5 meaning the dog does have this behavior.
       </p>
       <label class="headers control-label" for="Aggressive">Aggressive</label>
-      <input type="text" name="dogAggression" id="Aggressive" ng-model="vm.dogInfo.aggression"/>
+      <input type="text" name="dogAggression" id="Aggressive" ng-model="vm.dogInfo.aggression" required/>
       <label class="headers control-label" for="Confidence">Confidence</label>
-      <input type="text" name="dogConfidence" id="Confidence" ng-model="vm.dogInfo.confidence"/>
+      <input type="text" name="dogConfidence" id="Confidence" ng-model="vm.dogInfo.confidence" required/>
     </div>
     <a ng-href="/#/users/{{vm.user.id}}" ng-click="vm.updateUser()" class="btn btn-success">Next</a>
   </div>

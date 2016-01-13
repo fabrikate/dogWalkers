@@ -16,4 +16,4 @@
   - Animate CSS
   - WOW Animate CSS
 
-  [eDoggy](http://edoggy.herokuapp.com/)
+  [eDoggy](http://edoggy.herokuapp.com/auth/facebook)
