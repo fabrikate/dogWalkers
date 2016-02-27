@@ -47,6 +47,7 @@
       walks.forEach(function(walk) {
         if (walk.owner_id === parseInt(ID) && walk.walkerConfirm) {
           vm.usersWalks.push(walk);
+          console.log(vm.usersWalks);
         }
       })
     })
