@@ -33,7 +33,7 @@
     <p class="headers">If the date is in green, the transaction has been successfully completed.</p>
     <ul ng-repeat="walk in vm.usersWalks track by $index">
       <li ng-class="walk.dogReturnedConfirm ? 'text-success' : 'text-danger'"> Walk on:
-        {{walk.created_at | date : fullDate}}
+        {{ vm.dates | date : fullDate }}
         <a href="/#/scheduleWalk/{{vm.user.id}}/{{walk.walker_id}}/{{walk.id}}">See Details</a>
       </li>
     </ul>
