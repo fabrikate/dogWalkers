@@ -53,6 +53,7 @@
         }
       })
       vm.dates = vm.dates.sort();
+      console.log('sorted Dates are: ', vm.dates);
     })
 
   }
