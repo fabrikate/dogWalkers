@@ -42,18 +42,19 @@
         }
       })
     })
-    //create an array only for dates that can be organized
-    vm.dates = [];
+
     //show all past walks that are in progress / complete
     AppointmentFactory.query(function(walks) {
       walks.forEach(function(walk) {
         if (walk.owner_id === parseInt(ID) && walk.walkerConfirm) {
           vm.usersWalks.push(walk);
-          vm.dates.push(walk.created_at);
         }
       })
-      vm.dates = vm.dates.sort();
-      console.log('sorted Dates are: ', vm.dates);
+      vm.usersWalks.sort(function(a, b) {
+        var c = new Date(a.created_at);
+        var d = new Date(b.created_at);
+        return c - d;
+      })
     })
 
   }
