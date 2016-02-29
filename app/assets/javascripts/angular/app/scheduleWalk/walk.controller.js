@@ -128,12 +128,12 @@
     // functions to send text messages
     vm.sendConfirmWalk = function (id) {
       TwilioFactory.save({type: 'confirm', id: id}).$promise.then(function(resp) {
-        console.log('yes ', resp);
+        console.log(resp);
       })
     };
     vm.sendDenyWalk = function (id) {
       TwilioFactory.save({type: 'deny', id: id}).$promise.then(function(resp) {
-        console.log('yes ', resp);
+        console.log(resp);
       })
     };
   }

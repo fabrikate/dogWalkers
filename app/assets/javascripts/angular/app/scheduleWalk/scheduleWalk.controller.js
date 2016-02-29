@@ -18,7 +18,7 @@
       walker_id: '',
       meet_at: '',
       created_at: new Date(),
-      amountPayment: 10.00,
+      amountPayment: 12.00,
       walk_dateTime: ''
     }
     //Get the current User
@@ -52,6 +52,7 @@
       console.log(vm.additionalPics);
     })
     vm.ownerConfirm = function() {
+      // determine when the walk is
       $('#ownerCfm').attr('disabled', 'disabled');
       if (vm.when === 'now') {
         vm.walk.walk_dateTime = vm.walk.created_at;
@@ -60,6 +61,7 @@
         console.log(vm.walk.walk_dateTime);
         console.log(typeof vm.walk.walk_dateTime)
       }
+      // create walk in DB
       vm.newWalk = new AppointmentFactory;
       vm.newWalk = vm.walk;
       vm.newWalk.ownerRequested = true;
@@ -67,13 +69,14 @@
       AppointmentFactory.save({id: vm.newWalk.id}, vm.newWalk).$promise.then(function(data) {
         console.log('data is: ', data);
         vm.currentWalk = data.id;
+        // send Twilio
         vm.sendRequestWalk(vm.currentWalk);
       })
     }
     // function that send a post request that trigger twilio text messages
     vm.sendRequestWalk = function (id) {
       TwilioFactory.save({type: 'notify', id: id}).$promise.then(function(resp) {
-        console.log('yes ', resp);
+        console.log(resp);
       })
     }
   }
