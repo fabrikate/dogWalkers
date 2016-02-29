@@ -65,7 +65,7 @@
       <label class="headers control-label col-lg-5 col-xs-5" for="dogWeight">Dog's Weight in lbs</label>
       <input type="text" name="dogWeight" id="dogWeight" placeholder="8" ng-model="vm.dogInfo.weight"/>
     </div>
-    <div class="row col-lg-12 col-xs-12">
+    <div class="row col-lg-12 col-xs-12" ng-hide="vm.dogInfo.aggression">
       <p class="headers">
         On a Scale of 1 to 5. 1 meaning your dog does not have the behavior to 5 meaning the dog does have this behavior.
       </p>
