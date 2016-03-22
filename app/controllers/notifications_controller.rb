@@ -16,7 +16,6 @@ class NotificationsController < ApplicationController
        body: "You have a request for a walk! Visit eDoggy.herokuapp.com/#/scheduleWalk/#{@appointment.owner_id}/#{@appointment.walker_id}/#{@appointment.id}"
       })
     render plain: message.status
-    flash[:success] = 'Message Sent'
   end
 
   def confirm
@@ -32,7 +31,6 @@ class NotificationsController < ApplicationController
       })
 
     render plain: message.status
-    flash[:success] = 'Message Sent'
   end
 
   def deny

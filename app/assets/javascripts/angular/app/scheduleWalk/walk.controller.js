@@ -13,7 +13,7 @@
     var walkID = $routeParams.walk_id;
     vm.additionalPics = [];
 
-    //variables to store walk information
+    //variables to store walk information, update progress bar
     vm.walk = AppointmentFactory.get({id: walkID}, function () {
       vm.dogID = vm.walk.dog_id;
       vm.dog = DogFactory.get({id: vm.dogID});
@@ -22,6 +22,7 @@
     vm.owner = UserFactory.get({id: userID});
     vm.walker = UserFactory.get({id: walkerID});
 
+    // get additional pictures for users
     AddPicFactory.query(function( pics ) {
       pics.forEach(function(pic) {
         if (pic.user_id == $routeParams.user_id) {

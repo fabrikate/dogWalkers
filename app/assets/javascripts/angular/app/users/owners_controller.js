@@ -50,6 +50,7 @@
           vm.usersWalks.push(walk);
         }
       })
+      // Sort walks by date, have to sort by making it in a date object form
       vm.usersWalks.sort(function(a, b) {
         var c = new Date(a.created_at);
         var d = new Date(b.created_at);
